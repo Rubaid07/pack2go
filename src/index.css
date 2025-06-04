@@ -4,27 +4,28 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-@plugin "daisyui" {
-  themes: light --default, dark --prefersdark, cupcake;
-}
 
-.montserrat{
+.montserrat {
   font-family: "Montserrat", sans-serif;
 }
-.open-sans{
+
+.open-sans {
   font-family: "Open Sans", sans-serif;
 }
-ul{
-    gap: 20px;
+
+ul {
+  gap: 20px;
 }
+
 .hero-slider .slick-prev::before,
-.hero-slider .slick-next::before{
+.hero-slider .slick-next::before {
   border-radius: 50%;
   z-index: 1;
   opacity: 1 !important;
 }
 
-.hero-slider .slick-prev, .slick-next {
+.hero-slider .slick-prev,
+.slick-next {
   z-index: 1;
 }
 
