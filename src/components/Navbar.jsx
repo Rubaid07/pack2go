@@ -50,7 +50,7 @@ const Navbar = () => {
             <input type="checkbox" checked={theme === 'dark'} onChange={handleTheme} className="theme-controller toggle toggle-info" />
           </label>
           <div className='hidden lg:flex'>
-            <Link to='/signin' className="md:btn md:px-[30px] md:py-[15px] hover: md:flex rounded-sm px-3 py-2 text-white">Sign In</Link>
+            <Link to='/signin' className="md:btn md:px-[30px] md:py-[15px] md:bg-sky-600 hover:bg-sky-700 md:flex rounded-sm px-3 py-2 md:text-white">Sign In</Link>
           </div>
         </div>
       </div>
