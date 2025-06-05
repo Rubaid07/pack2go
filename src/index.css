@@ -17,22 +17,24 @@ ul {
   gap: 20px;
 }
 
-.hero-slider .slick-prev::before,
-.hero-slider .slick-next::before {
-  border-radius: 50%;
-  z-index: 1;
-  opacity: 1 !important;
+.text-active {
+  color: #58abfe;
+  text-decoration: underline;
+  text-underline-offset: 7px;
+  font-weight: 500;
+  transition: 0.3s ease;
 }
 
-.hero-slider .slick-prev,
-.slick-next {
-  z-index: 1;
+.text-inactive {
+  color: gray;
+  font-weight: 500;
+  transition: 0.3s ease;
 }
 
-.hero-slider .slick-prev {
-  left: 15px !important;
+[data-theme="dark"] .text-inactive {
+  color: #ffffff;
 }
 
-.hero-slider .slick-next {
-  right: 15px !important;
+.text-inactive:hover {
+  color: #3996f2;
 }

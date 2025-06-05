@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router';
-import logo from '../assets/pack2go.png'
+import logo from '../assets/logo.png'
+import logoText from '../assets/logo-text.png'
 import { useEffect, useState } from 'react';
 
 const Navbar = () => {
@@ -15,9 +16,9 @@ const Navbar = () => {
   }, [theme]);
 
   const links = <>
-    <NavLink to='/' className={({ isActive }) => isActive ? 'underline  underline-offset-7 font-medium' : 'text-neutral '}>Home</NavLink>
-    <NavLink to='/packages' className={({ isActive }) => isActive ? 'underline  underline-offset-7 font-medium' : 'text-neutral '}>All Packages</NavLink>
-    <NavLink to='/about' className={({ isActive }) => isActive ? 'underline  underline-offset-7 font-medium' : 'text-neutral '}>About Us</NavLink>
+    <NavLink to='/' className={({ isActive }) => isActive ? 'text-active' : 'text-inactive'}>Home</NavLink>
+    <NavLink to='/packages' className={({ isActive }) => isActive ? 'text-active' : 'text-inactive'}>All Packages</NavLink>
+    <NavLink to='/about' className={({ isActive }) => isActive ? 'text-active' : 'text-inactive'}>About Us</NavLink>
   </>;
 
   return (
@@ -34,9 +35,9 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <Link to="/" className='flex items-center gap-2 cursor-pointer'>
+          <Link to="/" className='flex items-center cursor-pointer'>
             <img className='md:w-12 w-7' src={logo} alt="" />
-            <p className='font-semibold text-2xl text-[#2C3E50]'>Pack<span className='text-[#4CAF50] text-3xl'>2Go</span></p>
+            <img className='md:w-30 w-24' src={logoText} alt="" />
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -45,12 +46,11 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <label className="cursor-pointer grid place-items-center mr-4">
-            <input type="checkbox" checked={theme === 'dark'} onChange={handleTheme} className=" toggle-info toggle theme-controller  row-start-1 col-start-1 col-span-2" />
+          <label className="text-base-content mr-4">
+            <input type="checkbox" checked={theme === 'dark'} onChange={handleTheme} className="theme-controller toggle toggle-info" />
           </label>
           <div className='hidden lg:flex'>
-            <Link to='/login' className="md:btn md:px-[30px] md:py-[15px] md:bg-transparent border hover: rounded-sm px-3 py-2 mr-3">Login</Link>
-            <Link to='/register' className="md:btn md:px-[30px] md:py-[15px] hover: md:flex rounded-sm px-3 py-2 text-white">Register</Link>
+            <Link to='/signin' className="md:btn md:px-[30px] md:py-[15px] hover: md:flex rounded-sm px-3 py-2 text-white">Sign In</Link>
           </div>
         </div>
       </div>
