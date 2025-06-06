@@ -1,9 +1,29 @@
-import React from 'react';
 import signin from '../assets/login.png';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import { AuthContext } from '../provider/AuthProvider';
+import { toast } from 'react-toastify';
+import { use, useState } from 'react';
 
 const SignIn = () => {
+    const navigate = useNavigate()
+    const { signIn } = use(AuthContext)
+    const [error, setError] = useState("")
+    const handleSignIn = e => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        signIn(email, password)
+         .then(result => {
+                toast.success("Logged in successfully")
+                navigate(`${location.state ? location.state : "/"}`)
+            })
+            .catch(error => {
+                const errorCode = error.code
+                setError(errorCode)
+            })
+    }
     return (
         <div className="max-h-[100vh-64px] flex gap-10 md:mt-10">
             <div className="hidden md:flex w-1/2 justify-end items-center p-8">
@@ -59,14 +79,14 @@ const SignIn = () => {
                         <p className="text-gray-400 mt-2">Enter your credentials to access your account</p>
                     </div>
 
-                    <form className="space-y-6">
+                    <form onSubmit={handleSignIn} className="space-y-6">
                         <div>
-                            <label htmlFor="email" className="block text-sm font-medium text-gray-500 mb-1">
+                            <label className="block text-sm font-medium text-gray-500 mb-1">
                                 Email address
                             </label>
                             <input
                                 type="email"
-                                id="email"
+                                name='email'
                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300"
                                 placeholder="you@example.com"
                                 required
@@ -74,12 +94,12 @@ const SignIn = () => {
                         </div>
 
                         <div>
-                            <label htmlFor="password" className="block text-sm font-medium text-gray-500 mb-1">
+                            <label className="block text-sm font-medium text-gray-500 mb-1">
                                 Password
                             </label>
                             <input
                                 type="password"
-                                id="password"
+                                name='password'
                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300"
                                 placeholder="••••••••"
                                 required
