@@ -7,7 +7,7 @@ import { CgLogOut } from 'react-icons/cg';
 import { toast } from 'react-toastify';
 
 const Navbar = () => {
-  const {user, logOut} = use(AuthContext)
+  const { user, logOut } = use(AuthContext)
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
   const handleTheme = e => {
     const newTheme = e.target.checked ? 'dark' : 'light';
@@ -22,16 +22,19 @@ const Navbar = () => {
   const links = <>
     <NavLink to='/' className={({ isActive }) => isActive ? 'text-active' : 'text-inactive'}>Home</NavLink>
     <NavLink to='/packages' className={({ isActive }) => isActive ? 'text-active' : 'text-inactive'}>All Packages</NavLink>
+    {user ? (
+      <NavLink to="my-booking" className={({ isActive }) => isActive ? 'text-active' : 'text-inactive'}>My Booking</NavLink>
+    ) : ("")}
     <NavLink to='/about' className={({ isActive }) => isActive ? 'text-active' : 'text-inactive'}>About Us</NavLink>
   </>;
 
   const handleLogout = () => {
     logOut()
-    .then(()=> {
-      toast.success("Logged out successfully")
-    }).catch(error => {
-      console.log(error);
-    })
+      .then(() => {
+        toast.success("Logged out successfully")
+      }).catch(error => {
+        console.log(error);
+      })
   }
   return (
     <div className='bg-base-100 shadow-md montserrat'>
@@ -45,9 +48,6 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 pb-5 shadow-md gap-5">
               {links}
-              {user ? (
-                <NavLink to="my-booking" className={({ isActive }) => isActive ? 'text-active' : 'text-inactive'}>My Booking</NavLink>
-              ) : ("")}
             </ul>
           </div>
           <Link to="/" className='flex items-center cursor-pointer'>
@@ -65,25 +65,25 @@ const Navbar = () => {
             <input type="checkbox" checked={theme === 'dark'} onChange={handleTheme} className="theme-controller toggle toggle-info" />
           </label>
 
-         {!user ? (
+          {!user ? (
             <Link to='/signin' className="btn px-[30px] py-[15px] hover:bg-sky-700 rounded-sm text-white bg-sky-600 text-center">Sign In</Link>
           ) : (
             <div className="dropdown dropdown-end">
-      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-        <div className="w-10 rounded-full">
-          <img
-            alt={user.name}
-            src={user?.photoURL} />
-        </div>
-      </div>
-      <ul
-        tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow gap-3">
-         <li><Link to="add-package">Add Package</Link></li>
-         <li><Link to="manage-package">Manage My Packages</Link></li>
-        <li onClick={handleLogout}><a>Logout  <CgLogOut size={16} /></a></li>
-      </ul>
-    </div>
+              <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img
+                    alt={user.name}
+                    src={user?.photoURL} />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow gap-3">
+                <li><Link to="add-package">Add Package</Link></li>
+                <li><Link to="manage-package">Manage My Packages</Link></li>
+                <li onClick={handleLogout}><a>Logout  <CgLogOut size={16} /></a></li>
+              </ul>
+            </div>
           )}
         </div>
       </div>
