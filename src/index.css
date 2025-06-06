@@ -13,10 +13,6 @@
   font-family: "Open Sans", sans-serif;
 }
 
-ul {
-  gap: 20px;
-}
-
 .text-active {
   color: #58abfe;
   text-decoration: underline;
