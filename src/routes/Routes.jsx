@@ -5,6 +5,8 @@ import Home from "../pages/Home";
 import AboutUs from "../pages/AboutUs";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
+import MyBookings from "../pages/MyBookings";
+import AddPackage from "../pages/AddPackage";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ export const router = createBrowserRouter([
       {
         path: '/about',
         Component: AboutUs
+      },
+      {
+        path: '/my-booking',
+        Component: MyBookings
+      },
+      {
+        path: '/add-package',
+        Component: AddPackage
       },
       {
         path: '/signin',

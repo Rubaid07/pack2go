@@ -34,3 +34,7 @@
 .text-inactive:hover {
   color: #3996f2;
 }
+
+[data-theme="dark"] .card-theme {
+  @apply bg-gradient-to-r from-[#1a2434] to-[#223048];
+}

@@ -99,7 +99,7 @@ const SignIn = () => {
                             <input
                                 type="email"
                                 name='email'
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300"
+                                className="w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300"
                                 placeholder="you@example.com"
                                 required
                             />
@@ -113,7 +113,7 @@ const SignIn = () => {
                             <input
                                 type="password"
                                 name='password'
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300"
+                                className="w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300"
                                 placeholder="••••••••"
                                 required
                             />
@@ -126,20 +126,20 @@ const SignIn = () => {
                                     id="remember-me"
                                     name="remember-me"
                                     type="checkbox"
-                                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700"
+                                    className="h-4 w-4 text-blue-600 focus:ring-teal-500 border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700"
                                 />
                                 <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-500">
                                     Remember me
                                 </label>
                             </div>
-                            <a href="#" className="text-sm text-blue-600 hover:underline dark:text-blue-400">
+                            <a href="#" className="text-sm text-teal-600 hover:underline">
                                 Forgot password?
                             </a>
                         </div>
 
                         <button
                             type="submit"
-                            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold transition duration-150 cupo py-3 px-4 rounded-lg shadow-md hover:shadow-lg mb-0 cursor-pointer"
+                            className="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold transition duration-150 cupo py-3 px-4 rounded-lg shadow-md hover:shadow-lg mb-0 cursor-pointer"
                         >
                             Sign in
                         </button>
@@ -153,7 +153,7 @@ const SignIn = () => {
 
                         <p className="text-center text-sm text-gray-600 dark:text-gray-400 flex gap-2 justify-center">
                             Don't have an account?
-                            <Link to="/signup" className="font-medium text-blue-600 hover:underline dark:text-blue-400">
+                            <Link to="/signup" className="font-medium text-teal-600 hover:underline dark:text-teal-400">
                                 Sign up
                             </Link>
                         </p>

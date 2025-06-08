@@ -90,7 +90,7 @@ const SignUp = () => {
                             <input
                                 type="text"
                                 name="name"
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300"
+                                className="w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300"
                                 placeholder="John Doe"
                                 required
                             />
@@ -104,7 +104,7 @@ const SignUp = () => {
                             <input
                                 type="email"
                                 name="email"
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300"
+                                className="w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300"
                                 placeholder="you@example.com"
                                 required
                             />
@@ -118,7 +118,7 @@ const SignUp = () => {
                             <input
                                 type="password"
                                 name="password"
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300"
+                                className="w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300"
                                 placeholder="••••••••"
                                 required
                             />
@@ -132,7 +132,7 @@ const SignUp = () => {
                             <input
                                 type="url"
                                 name="photo"
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300"
+                                className="w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300"
                                 placeholder="https://example.com/yourphoto.jpg"
                             />
                         </div>
@@ -140,7 +140,7 @@ const SignUp = () => {
 
                         <button
                             type="submit"
-                            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-150 mb-0 cursor-pointer"
+                            className="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-150 mb-0 cursor-pointer"
                         >
                             Sign up
                         </button>
@@ -153,7 +153,7 @@ const SignUp = () => {
 
                         <p className="text-center text-sm text-gray-600 dark:text-gray-400  flex gap-2 justify-center">
                             Already have an account?
-                            <Link to="/signin" className="font-medium text-blue-600 hover:underline dark:text-blue-400">
+                            <Link to="/signin" className="font-medium text-teal-600 hover:underline dark:text-teal-400">
                                 Sign in
                             </Link>
                         </p>
