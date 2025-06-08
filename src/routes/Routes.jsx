@@ -9,6 +9,7 @@ import MyBookings from "../pages/MyBookings";
 import AddPackage from "../pages/AddPackage";
 import PrivateRoute from "../layouts/PrivateRoute";
 import PackageDetails from "../pages/PackageDetails";
+import Booking from "../pages/Booking";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
       {
         path: '/package/:id',
         element: <PrivateRoute><PackageDetails></PackageDetails></PrivateRoute>
+      },
+      {
+        path: '/booking/:id',
+        element: <PrivateRoute><Booking></Booking></PrivateRoute>
       },
       {
         path: '/signin',

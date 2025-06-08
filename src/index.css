@@ -38,3 +38,6 @@
 [data-theme="dark"] .card-theme {
   @apply bg-gradient-to-r from-[#1a2434] to-[#223048];
 }
+[data-theme="dark"] .text {
+  @apply text-gray-400;
+}

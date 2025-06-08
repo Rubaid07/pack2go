@@ -1,6 +1,6 @@
 import signin from '../assets/login.png';
 import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 import { toast } from 'react-toastify';
 import { use, useState } from 'react';
@@ -9,6 +9,7 @@ const SignIn = () => {
     const navigate = useNavigate()
     const { signIn, signInWithGoogle } = use(AuthContext)
     const [error, setError] = useState("")
+    const location = useLocation()
     const handleSignIn = e => {
         e.preventDefault();
         const form = e.target;

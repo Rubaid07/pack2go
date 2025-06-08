@@ -8,19 +8,20 @@ import { GoArrowRight } from "react-icons/go";
 import { FaAngleLeft } from "react-icons/fa6";
 import { CiCalendarDate, CiLocationOn } from "react-icons/ci";
 import { IoMdTime } from "react-icons/io";
+import Loading from "../components/Loading";
 
 const PackageDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-  const [pkg, setPkg] = useState(null);
+  const [pakg, setPakg] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`http://localhost:3000/packages/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        setPkg(data);
+        setPakg(data);
         setLoading(false);
       })
       .catch((err) => {
@@ -29,15 +30,9 @@ const PackageDetails = () => {
       });
   }, [id]);
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-teal-500"></div>
-      </div>
-    );
-  }
+  if (loading) return <Loading></Loading>
 
-  if (!pkg) {
+  if (!pakg) {
     return (
       <div className="max-w-5xl mx-auto px-4 py-20 text-center">
         <h2 className="text-2xl font-bold text-red-500 mb-4">Package not found</h2>
@@ -63,15 +58,15 @@ const PackageDetails = () => {
       <div className="bg-base-200 card-theme rounded-xl shadow-lg overflow-hidden">
         <div className="relative h-80 md:h-96">
           <img 
-            src={pkg.image} 
-            alt={pkg.tour_name} 
+            src={pakg.image} 
+            alt={pakg.tour_name} 
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold text-white">{pkg.tour_name}</h1>
+              <h1 className="text-3xl md:text-4xl font-bold text-white">{pakg.tour_name}</h1>
               <p className="text-gray-200 mt-1">
-                Posted {formatDistanceToNow(new Date(pkg.created_at), { addSuffix: true })}
+                Posted {formatDistanceToNow(new Date(pakg.created_at), { addSuffix: true })}
               </p>
             </div>
           </div>
@@ -88,7 +83,7 @@ const PackageDetails = () => {
                   <div>
                     <p className="font-medium">Route</p>
                     <p className="text-gray-500 flex gap-3 items-center">
-                      {pkg.departure_location} <GoArrowRight /> {pkg.destination}
+                      {pakg.departure_location} <GoArrowRight /> {pakg.destination}
                     </p>
                   </div>
                 </div>
@@ -97,7 +92,7 @@ const PackageDetails = () => {
                   <IoMdTime size={20} className="text-teal-500 mt-1 mr-3" />
                   <div>
                     <p className="font-medium">Duration</p>
-                    <p className="text-gray-500">{pkg.duration}</p>
+                    <p className="text-gray-500">{pakg.duration}</p>
                   </div>
                 </div>
 
@@ -105,7 +100,7 @@ const PackageDetails = () => {
                   <CiCalendarDate size={20} className="text-teal-500 mt-1 mr-3" />
                   <div>
                     <p className="font-medium">Departure Date</p>
-                    <p className="text-gray-500">{pkg.departure_date}</p>
+                    <p className="text-gray-500">{pakg.departure_date}</p>
                   </div>
                 </div>
 
@@ -113,7 +108,7 @@ const PackageDetails = () => {
                   <TbCoinTaka size={20}  className="text-teal-500 mt-1 mr-3" />
                   <div>
                     <p className="font-medium">Price</p>
-                    <p className="text-gray-500">BDT {pkg.price}</p>
+                    <p className="text-gray-500">BDT {pakg.price}</p>
                   </div>
                 </div>
 
@@ -122,11 +117,11 @@ const PackageDetails = () => {
                   <div className="w-full bg-gray-200 rounded-full h-2.5">
                     <div 
                       className="bg-teal-600 h-2.5 rounded-full" 
-                      style={{ width: `${Math.min(pkg.bookingCount * 10, 100)}%` }}
+                      style={{ width: `${Math.min(pakg.bookingCount * 1, 100)}%` }}
                     ></div>
                   </div>
                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                    {pkg.bookingCount} bookings
+                    {pakg.bookingCount} bookings
                   </p>
                 </div>
               </div>
@@ -137,13 +132,12 @@ const PackageDetails = () => {
               
               <div className="flex items-center mb-4">
                 <img 
-                  src={pkg.guide_photo} 
-                  alt={pkg.guide_name} 
+                  src={pakg.guide_photo} 
+                  alt={pakg.guide_name} 
                   className="w-12 h-12 rounded-full object-cover border-2 border-teal-500"
                 />
                 <div className="ml-4">
-                  <p className="font-medium">{pkg.guide_name}</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Tour Guide</p>
+                  <p className="font-medium">{pakg.guide_name}</p>
                 </div>
               </div>
 
@@ -152,7 +146,7 @@ const PackageDetails = () => {
                   <FiMail size={20} className="text-teal-500 mt-1 mr-3" />
                   <div>
                     <p className="font-medium">Email</p>
-                    <p className="text-gray-500">{pkg.guide_email}</p>
+                    <p className="text-gray-500">{pakg.guide_email}</p>
                   </div>
                 </div>
 
@@ -160,7 +154,7 @@ const PackageDetails = () => {
                   <FiPhone size={20} className="text-teal-500 mt-1 mr-3" />
                   <div>
                     <p className="font-medium">Contact</p>
-                    <p className="text-gray-500">{pkg.contact_no}</p>
+                    <p className="text-gray-500">{pakg.contact_no}</p>
                   </div>
                 </div>
               </div>
@@ -169,15 +163,15 @@ const PackageDetails = () => {
 
           <div className="mt-8">
             <h3 className="text-xl font-semibold mb-4">Package Details</h3>
-            <div className="prose max-w-none text-gray-400 whitespace-pre-line">
-              {pkg.package_details}
+            <div className="text text-gray-500 whitespace-pre-line">
+              {pakg.package_details}
             </div>
           </div>
 
-          {user?.email !== pkg.guide_email && (
+          {user?.email !== pakg.guide_email && (
             <div className="mt-10">
               <button
-                onClick={() => navigate(`/book/${pkg._id}`)}
+                onClick={() => navigate(`/booking/${pakg._id}`)}
                 className="bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
               >
                 Book Now
