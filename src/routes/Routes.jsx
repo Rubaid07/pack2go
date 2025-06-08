@@ -7,6 +7,8 @@ import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import MyBookings from "../pages/MyBookings";
 import AddPackage from "../pages/AddPackage";
+import PrivateRoute from "../layouts/PrivateRoute";
+import PackageDetails from "../pages/PackageDetails";
 
 export const router = createBrowserRouter([
   {
@@ -32,7 +34,11 @@ export const router = createBrowserRouter([
       },
       {
         path: '/add-package',
-        Component: AddPackage
+        element: <PrivateRoute><AddPackage></AddPackage></PrivateRoute>
+      },
+      {
+        path: '/package/:id',
+        element: <PrivateRoute><PackageDetails></PackageDetails></PrivateRoute>
       },
       {
         path: '/signin',

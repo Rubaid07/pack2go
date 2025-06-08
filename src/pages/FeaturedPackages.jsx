@@ -3,6 +3,7 @@ import { CiCalendarDate, CiLocationOn } from "react-icons/ci";
 import { IoTimeOutline } from "react-icons/io5";
 import { TbCoinTaka } from "react-icons/tb";
 import { Link } from "react-router";
+import { formatDistanceToNow } from 'date-fns';
 
 const FeaturedPackages = () => {
   const [packages, setPackages] = useState([]);
@@ -41,12 +42,15 @@ const FeaturedPackages = () => {
           </p>
         </div>
 
+
+
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {packages.map(pkg => (
             <div
               key={pkg._id}
               className="card-theme bg-base-200 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl"
             >
+
               <div className="relative h-60 overflow-hidden">
                 <img
                   src={pkg.image}
@@ -67,12 +71,15 @@ const FeaturedPackages = () => {
                   />
                   <div>
                     <p className="text-teal-600 dark:text-teal-400">{pkg.guide_name}</p>
+                <p className="text-xs text-gray-500 mb-2">
+                  Posted {formatDistanceToNow(new Date(pkg.created_at), { addSuffix: true })}
+                </p>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 mb-5">
                   <div className="flex items-center space-x-2">
-                  <IoTimeOutline size={20} />
+                    <IoTimeOutline size={20} />
                     <span className="text-sm ">{pkg.duration}</span>
                   </div>
                   <div className="flex items-center space-x-2">
@@ -80,11 +87,11 @@ const FeaturedPackages = () => {
                     <span className="text-sm">{pkg.departure_date}</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                   <TbCoinTaka size={20} />
+                    <TbCoinTaka size={20} />
                     <span className="text-sm ">BDT {pkg.price}</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                   <CiLocationOn size={20} />
+                    <CiLocationOn size={20} />
                     <span className="text-sm ">{pkg.destination}</span>
                   </div>
                 </div>
