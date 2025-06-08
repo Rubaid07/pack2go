@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/my-booking',
-        Component: MyBookings
+        element: <PrivateRoute><MyBookings></MyBookings></PrivateRoute>
       },
       {
         path: '/add-package',

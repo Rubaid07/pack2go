@@ -48,7 +48,9 @@ const Booking = () => {
                         icon: "success",
                         title: "Booking confirmed",
                         showConfirmButton: false,
-                        timer: 1500
+                        timer: 1500,
+                        background: '#1f2937',
+                        color: '#fff'
                     });
                     navigate("/my-booking");
                 }
