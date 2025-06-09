@@ -12,11 +12,12 @@ import PackageDetails from "../pages/PackageDetails";
 import Booking from "../pages/Booking";
 import ManageMyPackages from "../pages/ManageMyPackages";
 import EditPackage from "../pages/EditPackage";
+import NotFound from "../pages/NotFound";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    errorElement: <p>error</p>,
+    errorElement: <NotFound></NotFound>,
     Component: MainLayout,
     children: [
       {

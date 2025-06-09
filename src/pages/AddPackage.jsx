@@ -11,7 +11,6 @@ const AddPackage = () => {
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-
     const newPackage = {
       ...data,
       guide_name: user.displayName,

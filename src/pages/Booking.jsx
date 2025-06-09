@@ -22,17 +22,20 @@ const Booking = () => {
 
     const handleBooking = (e) => {
         e.preventDefault();
+        const note = e.target.note.value;
 
         const bookingData = {
             tour_id: pkg._id,
             tour_name: pkg.tour_name,
             guide_name: pkg.guide_name,
             guide_email: pkg.guide_email,
+            guide_contact: pkg.contact_no,
             buyer_email: user.email,
             buyer_name: user.displayName,
             booking_date: new Date(),
             departure_date: pkg.departure_date,
-            status: "pending"
+            status: "pending",
+            notes: note
         };
 
         fetch("http://localhost:3000/bookings", {
@@ -63,11 +66,17 @@ const Booking = () => {
         <div className="max-w-2xl mx-auto mt-10 bg-base-100 p-6 rounded shadow">
             <h2 className="text-2xl font-bold mb-4">Book: {pkg.tour_name}</h2>
             <form onSubmit={handleBooking} className="space-y-4">
-                <input value={pkg.tour_name} className="input w-full" />
-                <input value={`BDT ${pkg.price}`} className="input w-full" />
-                <input value={user.displayName} className="input w-full" />
-                <input value={user.email} className="input w-full" />
-                <input value={pkg.departure_date} className="input w-full" />
+                <input readOnly value={pkg.tour_name} className="input w-full focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                <input readOnly value={`BDT ${pkg.price}`} className="input w-full focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                <input readOnly value={user.displayName} className="input w-full focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                <input readOnly value={user.email} className="input w-full focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                <input readOnly value={pkg.departure_date} className="input w-full focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                <textarea
+                    name="note"
+                    placeholder="Special Note (optional)"
+                    className="textarea textarea-bordered w-full focus:outline-none focus:ring-2 focus:ring-teal-500"
+                    rows="3"
+                ></textarea>
                 <button type="submit" className="btn bg-teal-600 cursor-pointer hover:bg-teal-700 text-white w-full">
                     Confirm Booking
                 </button>
