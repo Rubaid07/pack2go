@@ -42,7 +42,7 @@ const AboutPage = () => {
             </section>
 
             <section className="mb-20 bg-teal-600 text-white py-12 rounded-lg">
-                <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto text-center px-6">
+                <div className="grid md:grid-cols-4 grid-cols-2 gap-8 max-w-6xl mx-auto text-center px-6">
                     <div>
                         <p className="text-4xl font-bold"><CountUp end={12} enableScrollSpy='true'></CountUp>+</p>
                         <p>Years Experience</p>

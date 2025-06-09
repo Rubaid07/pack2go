@@ -49,7 +49,8 @@ const AddPackage = () => {
         });
       });
   };
-
+  const today = new Date();
+  const formatedToday = today.toISOString().split('T')[0];
   return (
     <div className="max-w-4xl mx-auto p-6 my-10 shadow-xl rounded-xl transition-all duration-300">
       <div className="text-center mb-8">
@@ -131,6 +132,7 @@ const AddPackage = () => {
               type="date" 
               name="departure_date" 
               className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
+              min={formatedToday}
               required 
             />
           </div>
