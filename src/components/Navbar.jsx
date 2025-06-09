@@ -43,7 +43,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className='bg-base-100  shadow-md transition-colors duration-300'>
+    <div className='bg-base-100 sticky top-0 z-50 shadow-md transition-colors duration-300'>
       <div className="navbar max-w-7xl mx-auto px-4 py-3">
         <div className="navbar-start">
           <div className="dropdown lg:hidden">
