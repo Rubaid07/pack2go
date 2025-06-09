@@ -108,7 +108,7 @@ const FeaturedPackages = () => {
 
         <div className="mt-16 text-center">
           <Link to="/packages">
-            <button className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-800 hover:bg-gray-900 transition duration-300 transform hover:scale-[1.02]">
+            <button className="px-6 py-3 font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-teal-500 to-teal-700 hover:from-teal-700 hover:to-teal-500 transition duration-400 cursor-pointer">
               Explore All Packages
             </button>
           </Link>

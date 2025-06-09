@@ -64,7 +64,7 @@ const AddPackage = () => {
               type="text" 
               name="tour_name" 
               placeholder="Tour Name" 
-              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 transition duration-300" 
+              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition duration-300" 
               required 
             />
           </div>
@@ -75,7 +75,7 @@ const AddPackage = () => {
               type="text" 
               name="image" 
               placeholder="https://example.com/image.jpg" 
-              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 transition duration-300" 
+              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition duration-300" 
               required 
             />
           </div>
@@ -86,7 +86,7 @@ const AddPackage = () => {
               type="text" 
               name="duration" 
               placeholder="Travel Duration" 
-              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 transition duration-300" 
+              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition duration-300" 
               required 
             />
           </div>
@@ -97,7 +97,7 @@ const AddPackage = () => {
               type="text" 
               name="departure_location" 
               placeholder="Departure Location" 
-              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 transition duration-300" 
+              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition duration-300" 
               required 
             />
           </div>
@@ -108,7 +108,7 @@ const AddPackage = () => {
               type="text" 
               name="destination" 
               placeholder="Destination" 
-              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 transition duration-300" 
+              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition duration-300" 
               required 
             />
           </div>
@@ -119,7 +119,7 @@ const AddPackage = () => {
               type="number" 
               name="price" 
               placeholder="Price (BDT)" 
-              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 transition duration-300" 
+              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition duration-300" 
               required 
             />
           </div>
@@ -129,7 +129,7 @@ const AddPackage = () => {
             <input 
               type="date" 
               name="departure_date" 
-              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 transition duration-300" 
+              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition duration-300" 
               required 
             />
           </div>
@@ -140,7 +140,7 @@ const AddPackage = () => {
               type="text" 
               name="contact_no" 
               placeholder="+8801XXXXXXXXX" 
-              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 transition duration-300" 
+              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition duration-300" 
               required 
             />
           </div>
@@ -152,7 +152,7 @@ const AddPackage = () => {
             name="package_details" 
             rows="4" 
             placeholder="Describe the package details including itinerary, inclusions, exclusions, etc." 
-            className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 transition duration-300" 
+            className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition duration-300" 
             required
           ></textarea>
         </div>
@@ -160,7 +160,7 @@ const AddPackage = () => {
         <div className="pt-4">
           <button 
             type="submit" 
-            className="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-300 cursor-pointer "
+            className="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-300 cursor-pointer "
           >
             Add Package
           </button>

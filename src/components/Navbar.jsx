@@ -91,7 +91,7 @@ const Navbar = () => {
               </div>
               <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                 <li><Link to="add-package" className="hover:text-teal-500">Add Package</Link></li>
-                <li><Link to="manage-package" className="hover:text-teal-500">Manage My Packages</Link></li>
+                <li><Link to="manage-packages" className="hover:text-teal-500">Manage My Packages</Link></li>
                 <li onClick={handleLogout}><a className="hover:text-teal-500">Logout <CgLogOut size={16} className="ml-1" /></a></li>
               </ul>
             </div>

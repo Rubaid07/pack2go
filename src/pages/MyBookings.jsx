@@ -53,8 +53,8 @@ const MyBookings = () => {
                     {bookings.map(booking => (
                         <div key={booking._id} className="bg-base-200 rounded shadow p-4 card-theme">
                             <h3 className="text-xl font-semibold mb-1">{booking.tour_name}</h3>
-                            <p>Guide: <span className="text-gray-500">{booking.guide_name}</span></p>
-                            <p>Departure Date: <span className="text-gray-500">{booking.departure_date}</span></p>
+                            <p>Guide: <span className="text-gray-500 text">{booking.guide_name}</span></p>
+                            <p>Departure Date: <span className="text-gray-500 text">{booking.departure_date}</span></p>
                             <p>Status:
                                 <span className={`ml-2 px-2 py-1 rounded text-sm ${booking.status === 'pending' ? 'bg-yellow-200 text-yellow-800' : 'bg-green-200 text-green-800'
                                     }`}>

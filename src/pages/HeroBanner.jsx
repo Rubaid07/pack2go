@@ -60,7 +60,7 @@ const HeroBanner = () => {
                             <h1 className="text-4xl md:text-5xl font-bold mb-4">{item.title}</h1>
                             <p className="text-lg md:text-xl mb-6 max-w-xl">{item.description}</p>
                             <Link to="/packages">
-                                <button className="bg-teal-600 hover:bg-teal-700 cursor-pointer transition duration-150 px-6 py-3 rounded font-semibold shadow">
+                                <button className="bg-gradient-to-r from-teal-500 to-teal-700 hover:from-teal-700 hover:to-teal-500 cursor-pointer transition duration-400 px-6 py-3 rounded font-semibold shadow">
                                     Explore All Packages
                                 </button>
                             </Link>
