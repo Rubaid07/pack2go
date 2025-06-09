@@ -30,7 +30,7 @@ const AllPackages = () => {
     return (
         <div className="max-w-7xl mx-auto px-4 py-10">
             <div className="mb-8 text-center">
-                <h2 className="text-3xl font-semibold bg-gradient-to-r from-teal-400 to-teal-700 bg-clip-text text-transparent">
+                <h2 className="text-3xl font-semibold bg-gradient-to-r mx-auto from-teal-400 to-teal-600 bg-clip-text text-transparent w-max">
                     All Tour Packages
                 </h2>
                 <input

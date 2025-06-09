@@ -45,7 +45,7 @@ const MyBookings = () => {
 
     return (
         <div className="max-w-5xl mx-auto px-4 py-10">
-             <h2 className="text-3xl font-semibold bg-gradient-to-r from-teal-400 to-teal-700 bg-clip-text text-transparent mb-5 w-full">
+             <h2 className="text-3xl font-semibold bg-gradient-to-r from-teal-400 to-teal-600 bg-clip-text text-transparent mb-5 w-max">
             My Bookings
           </h2>
             {bookings.length === 0 ? (

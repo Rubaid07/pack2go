@@ -30,7 +30,7 @@ const FeaturedPackages = () => {
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-semibold bg-gradient-to-r from-teal-400 to-teal-700 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-semibold bg-gradient-to-r mx-auto from-teal-400 to-teal-600 bg-clip-text text-transparent w-max">
             Featured Tour Packages
           </h2>
           <p className="mt-5 max-w-xl mx-auto text-xl text-gray-500">
