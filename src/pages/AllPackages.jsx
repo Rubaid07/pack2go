@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router";
-import { CiLocationOn, CiCalendarDate } from "react-icons/ci";
-import { IoTimeOutline } from "react-icons/io5";
-import { TbCoinTaka } from "react-icons/tb";
-import { formatDistanceToNow } from "date-fns";
 import PackageCard from "./PackageCard";
+import Loading from "../components/Loading";
 
 const AllPackages = () => {
     const [packages, setPackages] = useState([]);
     const [search, setSearch] = useState("");
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch("http://localhost:3000/packages")
@@ -16,6 +13,7 @@ const AllPackages = () => {
             .then(data => {
                 const randomData = data.sort(() => Math.random() - 0.5);
                 setPackages(randomData);
+                setLoading(false);
             });
     }, []);
 
@@ -26,6 +24,7 @@ const AllPackages = () => {
     const filter = packages.filter(pkg =>
         pkg.tour_name.toLowerCase().includes(search)
     );
+    if (loading) return <Loading></Loading>
 
     return (
         <div className="max-w-7xl mx-auto px-4 py-10">

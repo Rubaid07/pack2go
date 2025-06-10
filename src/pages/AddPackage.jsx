@@ -54,7 +54,7 @@ const AddPackage = () => {
   return (
     <div className="max-w-4xl mx-auto p-6 my-10 shadow-xl rounded-xl transition-all duration-300">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold mb-2">Add a Tour Package</h2>
+        <h2 className="text-3xl font-semibold bg-gradient-to-r mx-auto from-teal-400 to-teal-600 bg-clip-text text-transparent w-max mb-2">Add a Tour Package</h2>
         <p className="text-gray-400">Fill out the form to create a new tour package</p>
       </div>
 

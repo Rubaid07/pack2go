@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import PackageCard from "./PackageCard";
+import Loading from "../components/Loading";
 
 const FeaturedPackages = () => {
   const [packages, setPackages] = useState([]);
@@ -19,13 +20,7 @@ const FeaturedPackages = () => {
       });
   }, []);
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-teal-500"></div>
-      </div>
-    );
-  }
+  if (loading) return <Loading></Loading>
   return (
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">

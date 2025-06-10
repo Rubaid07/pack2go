@@ -52,7 +52,7 @@ const ManageMyPackages = () => {
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-10">
-            <h2 className="text-2xl font-bold mb-6">Manage My Packages</h2>
+            <h2 className="text-3xl font-semibold bg-gradient-to-r  from-teal-400 to-teal-600 bg-clip-text text-transparent w-max mb-6">Manage My Packages</h2>
 
             {loading ? (
                 <p>Loading your packages...</p>
@@ -65,7 +65,9 @@ const ManageMyPackages = () => {
                             <img src={pkag.image} alt={pkag.tour_name} className="w-full h-48 object-cover rounded mb-3" />
                             <h3 className="text-xl font-bold">{pkag.tour_name}</h3>
                             <p className="text-sm text text-gray-500">BDT {pkag.price}</p>
-                            <p className="text-sm text text-gray-500">Departure: {pkag.departure_date}</p>
+                            <p className="text-sm text text-gray-500">Departure Date: {pkag.departure_date}</p>
+                            <p className="text-sm text text-gray-500">Departure Location: {pkag.departure_location}</p>
+                            <p className="text-sm text text-gray-500">Destination: {pkag.destination}</p>
                             <div className="mt-4 flex gap-2">
                                 <button
                                     onClick={() => handleDelete(pkag._id)}
@@ -74,8 +76,8 @@ const ManageMyPackages = () => {
                                     Delete
                                 </button>
                                 <Link to={`/edit-package/${pkag._id}`}>
-  <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded">Edit</button>
-</Link>
+                                    <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded cursor-pointer">Edit</button>
+                                </Link>
                             </div>
                         </div>
                     ))}
