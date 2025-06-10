@@ -9,7 +9,7 @@ const ManageMyPackages = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/my-packages?email=${user.email}`)
+        fetch(`${import.meta.env.VITE_API_URL}/my-packages?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setPackages(data);
@@ -28,7 +28,7 @@ const ManageMyPackages = () => {
             color: '#fff'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/packages/${id}`, {
+                fetch(`${import.meta.env.VITE_API_URL}/packages/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

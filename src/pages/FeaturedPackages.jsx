@@ -8,7 +8,7 @@ const FeaturedPackages = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/packages/featured")
+    fetch(`${import.meta.env.VITE_API_URL}/packages/featured`)
       .then(res => res.json())
       .then(data => {
         setPackages(data);

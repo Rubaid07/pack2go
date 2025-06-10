@@ -22,7 +22,7 @@ const AddPackage = () => {
       created_at: new Date()
     };
 
-    axios.post('http://localhost:3000/packages  ', newPackage)
+    axios.post(`${import.meta.env.VITE_API_URL}/packages`, newPackage)
       .then(res => {
         if (res.data.insertedId) {
           Swal.fire({

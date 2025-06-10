@@ -8,7 +8,7 @@ const AllPackages = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("http://localhost:3000/packages")
+        fetch(`${import.meta.env.VITE_API_URL}/packages`)
             .then(res => res.json())
             .then(data => {
                 const randomData = data.sort(() => Math.random() - 0.5);

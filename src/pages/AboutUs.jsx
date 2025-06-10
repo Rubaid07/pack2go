@@ -44,19 +44,19 @@ const AboutPage = () => {
             <section className="mb-20 bg-teal-600 text-white py-12 rounded-lg">
                 <div className="grid md:grid-cols-4 grid-cols-2 gap-8 max-w-6xl mx-auto text-center px-6">
                     <div>
-                        <p className="text-4xl font-bold"><CountUp end={12} enableScrollSpy='true'></CountUp>+</p>
+                        <p className="text-4xl font-bold"><CountUp end={12}></CountUp>+</p>
                         <p>Years Experience</p>
                     </div>
                     <div>
-                        <p className="text-4xl font-bold"><CountUp end={500} enableScrollSpy='true'></CountUp>+</p>
+                        <p className="text-4xl font-bold"><CountUp end={500}></CountUp>+</p>
                         <p>Curated Tours</p>
                     </div>
                     <div>
-                        <p className="text-4xl font-bold"><CountUp end={10} enableScrollSpy='true'></CountUp>K+</p>
+                        <p className="text-4xl font-bold"><CountUp end={10}></CountUp>K+</p>
                         <p>Happy Travelers</p>
                     </div>
                     <div>
-                        <p className="text-4xl font-bold"><CountUp end={50} enableScrollSpy='true'></CountUp>+</p>
+                        <p className="text-4xl font-bold"><CountUp end={50}></CountUp>+</p>
                         <p>Destinations</p>
                     </div>
                 </div>

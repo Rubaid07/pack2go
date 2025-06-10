@@ -5,11 +5,12 @@ import Loading from "../components/Loading";
 
 const MyBookings = () => {
     const { user } = use(AuthContext);
+    console.log(user.accessToken);
     const [bookings, setBookings] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/bookings?email=${user.email}`)
+        fetch(`${import.meta.env.VITE_API_URL}/bookings?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setBookings(data);
@@ -18,7 +19,7 @@ const MyBookings = () => {
     }, [user.email]);
 
     const handleConfirm = (id) => {
-        fetch(`http://localhost:3000/bookings/${id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/bookings/${id}`, {
             method: "PATCH",
             headers: { "content-type": "application/json" }
         })

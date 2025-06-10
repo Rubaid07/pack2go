@@ -10,7 +10,7 @@ const EditPackage = () => {
   const [pkg, setPkg ]  = useState(null)
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/packages/${id}`)
+    axios.get(`${import.meta.env.VITE_API_URL}/packages/${id}`)
       .then(data => setPkg(data.data))
   }, [id]);
 
@@ -30,7 +30,7 @@ const EditPackage = () => {
       package_details: form.package_details.value,
     }
 
-    axios.put(`http://localhost:3000/packages/${id}`, updatePkg)
+    axios.put(`${import.meta.env.VITE_API_URL}/packages/${id}`, updatePkg)
       .then(res => {
         if (res.data.modifiedCount > 0) {
           Swal.fire({

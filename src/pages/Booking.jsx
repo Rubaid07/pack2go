@@ -12,7 +12,7 @@ const Booking = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/packages/${id}`)
+        fetch(`${import.meta.env.VITE_API_URL}/packages/${id}`)
             .then((res) => res.json())
             .then((data) => {
                 setPkg(data);
@@ -38,7 +38,7 @@ const Booking = () => {
             notes: note
         };
 
-        fetch("http://localhost:3000/bookings", {
+        fetch(`${import.meta.env.VITE_API_URL}/bookings`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(bookingData)
