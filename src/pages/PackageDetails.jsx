@@ -91,7 +91,7 @@ const PackageDetails = () => {
                 <div className="flex items-start">
                   <IoMdTime size={20} className="text-teal-500 mt-1 mr-3" />
                   <div>
-                    <p className="font-medium">Duration</p>
+                    <p className="font-medium">Travel Duration</p>
                     <p className="text-gray-500">{pakg.duration}</p>
                   </div>
                 </div>
