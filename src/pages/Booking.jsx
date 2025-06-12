@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
 import Loading from "../components/Loading";
+import useAxiosSecure from "../hook/useAxiosSecure";
 
 const Booking = () => {
     const { id } = useParams();
@@ -10,6 +11,7 @@ const Booking = () => {
     const navigate = useNavigate();
     const [pkg, setPkg] = useState(null);
     const [loading, setLoading] = useState(true);
+    const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/packages/${id}`)
@@ -23,6 +25,7 @@ const Booking = () => {
     const handleBooking = (e) => {
         e.preventDefault();
         const note = e.target.note.value;
+        const contact = e.target.contact.value;
 
         const bookingData = {
             tour_id: pkg._id,
@@ -31,21 +34,19 @@ const Booking = () => {
             guide_email: pkg.guide_email,
             guide_contact: pkg.contact_no,
             buyer_email: user.email,
+            buyer_contact: contact,
             buyer_name: user.displayName,
             booking_date: new Date(),
+            departure_location: pkg.departure_location,
+            destination: pkg.destination,
             departure_date: pkg.departure_date,
             status: "pending",
             notes: note
         };
 
-        fetch(`${import.meta.env.VITE_API_URL}/bookings`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(bookingData)
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.insertedId) {
+        axiosSecure.post('/bookings', bookingData)
+            .then(res => {
+                if (res.data.insertedId) {
                     Swal.fire({
                         position: "center",
                         icon: "success",
@@ -57,7 +58,7 @@ const Booking = () => {
                     });
                     navigate("/my-booking");
                 }
-            });
+            })
     };
 
     if (loading) return <Loading></Loading>;
@@ -70,7 +71,15 @@ const Booking = () => {
                 <input readOnly value={`BDT ${pkg.price}`} className="input w-full focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" />
                 <input readOnly value={user.displayName} className="input w-full focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" />
                 <input readOnly value={user.email} className="input w-full focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" />
+
                 <input readOnly value={pkg.departure_date} className="input w-full focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" />
+                <input
+                    type="text"
+                    name="contact"
+                    placeholder="Your Contact Number"
+                    className="input w-full focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    required
+                />
                 <textarea
                     name="note"
                     placeholder="Special Note (optional)"
