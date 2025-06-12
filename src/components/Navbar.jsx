@@ -67,14 +67,12 @@ const Navbar = () => {
             <img className='w-24 md:w-32' src={logoText} alt="Brand Name" />
           </Link>
         </div>
-
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu flex-row">
-            {links}
-          </ul>
-        </div>
-
         <div className="navbar-end gap-4">
+          <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal px-1 gap-3">
+              {links}
+            </ul>
+          </div>
           <label className="flex items-center cursor-pointer">
             <input
               type="checkbox"
@@ -90,7 +88,7 @@ const Navbar = () => {
             </Link>
           ) : (
             <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="btn md:tooltip md:tooltip-right btn-ghost btn-circle avatar" data-tip={user.displayName}>
+              <div tabIndex={0} role="button" className="btn xl:tooltip xl:tooltip-right btn-ghost btn-circle avatar" data-tip={user.displayName}>
                 <div className="w-10 rounded-full border-2 border-teal-500">
                   <img alt={user.displayName} src={user?.photoURL} />
                 </div>
