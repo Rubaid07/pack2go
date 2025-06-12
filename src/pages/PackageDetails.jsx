@@ -151,8 +151,14 @@ const PackageDetails = () => {
               </div>
             </div>
           </div>
-           {user?.email !== pakg.guide_email && (
-                    <div className="mt-5">
+          <div className="mt-8">
+            
+            <h3 className="text-xl font-semibold mb-4">Package Details</h3>
+            <div className="text text-gray-500 whitespace-pre-line">
+              {pakg.package_details}
+            </div>
+              {user?.email !== pakg.guide_email && (
+                    <div className="mt-10">
                       <button
                         onClick={() => navigate(`/booking/${pakg._id}`)}
                         className="bg-teal-600 hover:bg-teal-700 text-white font-medium cursor-pointer py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
@@ -161,13 +167,6 @@ const PackageDetails = () => {
                       </button>
                     </div>
                   )}
-
-          <div className="mt-8">
-            
-            <h3 className="text-xl font-semibold mb-4">Package Details</h3>
-            <div className="text text-gray-500 whitespace-pre-line">
-              {pakg.package_details}
-            </div>
           </div>
         </div>
       </div>
