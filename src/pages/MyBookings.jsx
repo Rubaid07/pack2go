@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import useAxiosSecure from "../hook/useAxiosSecure";
 import Loading from "../components/Loading";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const MyBookings = () => {
     const { user } = useContext(AuthContext);
@@ -24,6 +25,27 @@ const MyBookings = () => {
         }
     }, [user?.email, axiosSecure]);
 
+    const handleConfirm = (id) => {
+        axiosSecure.patch(`/bookings/${id}`)
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Booking confirmed",
+                        showConfirmButton: false,
+                        timer: 1500,
+                        background: '#1f2937',
+                        color: '#fff'
+                    });
+
+                    setBookings(prev =>
+                        prev.map(b => b._id === id ? { ...b, status: "completed" } : b)
+                    );
+                }
+            })
+    };
+
     if (loading) return <Loading></Loading>;
 
     return (
@@ -45,13 +67,20 @@ const MyBookings = () => {
                             <p>Note: <span className="text-gray-500 text">{booking.notes || "None"}</span></p>
                             <p>Status:
                                 <span className={`ml-2 px-2 py-1 rounded text-sm ${booking.status === "pending"
-                                        ? "bg-yellow-200 text-yellow-800"
-                                        : "bg-green-200 text-green-800"
+                                    ? "bg-yellow-200 text-yellow-800"
+                                    : "bg-green-200 text-green-800"
                                     }`}>
                                     {booking.status}
                                 </span>
                             </p>
-
+                            {booking.status === "pending" && user?.email === booking.buyer_email && (
+                                <button
+                                    onClick={() => handleConfirm(booking._id)}
+                                    className="mt-4 bg-teal-600 hover:bg-teal-700 text-white py-2 px-4 rounded cursor-pointer"
+                                >
+                                    Confirm Booking
+                                </button>
+                            )}
                         </div>
                     ))}
                 </div>

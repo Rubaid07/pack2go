@@ -31,9 +31,6 @@ const Navbar = () => {
       <>
         <li>
           <NavLink to="my-booking" className={({ isActive }) => isActive ? 'text-teal-500 font-medium' : 'text-gray-400 dar hover:text-teal-500'}>My Booking</NavLink></li>
-        <li>
-          <NavLink to="/guide-bookings" className={({ isActive }) => isActive ? 'text-teal-500 font-medium' : 'text-gray-400 dar hover:text-teal-500'}>Guide Bookings</NavLink>
-        </li>
       </>
     )}
     <li> <NavLink to='/about' className={({ isActive }) => isActive ? 'text-teal-500 font-medium' : 'text-gray-400 dar hover:text-teal-500'}>About Us</NavLink></li>
