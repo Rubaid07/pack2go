@@ -13,7 +13,7 @@ const MyBookings = () => {
         if (user?.email) {
             axiosSecure.get(`/bookings?email=${user.email}`)
                 .then(res => {
-                    setBookings(res.data);
+                    setBookings(res.data.reverse());
                 })
                 .catch(error => {
                     console.log(error);

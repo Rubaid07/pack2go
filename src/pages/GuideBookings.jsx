@@ -14,7 +14,7 @@ const GuideBookings = () => {
         if (user?.email) {
             axiosSecure.get("/guide-bookings")
                 .then(res => {
-                    setBookings(res.data);
+                    setBookings(res.data.reverse());
                 })
                 .catch(error => {
                     console.log(error);
