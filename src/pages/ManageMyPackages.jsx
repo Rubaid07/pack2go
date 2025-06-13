@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
-import { Link } from "react-router"; // ✅ fix import
+import { Link } from "react-router";
 import useAxiosSecure from "../hook/useAxiosSecure";
 import Loading from "../components/Loading";
 
@@ -74,21 +74,18 @@ const ManageMyPackages = () => {
                             <p className="text-sm text-gray-500 text">Destination: {pkag.destination}</p>
 
                             <div className="mt-4 flex flex-wrap gap-2">
-                                {/* ✅ View Details Button */}
                                 <Link to={`/package/${pkag._id}`}>
                                     <button className="bg-teal-500 hover:bg-teal-600 text-white px-4 py-1 rounded cursor-pointer">
                                         View
                                     </button>
                                 </Link>
 
-                                {/* ✅ Edit Package Button */}
                                 <Link to={`/edit-package/${pkag._id}`}>
                                     <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded cursor-pointer">
                                         Edit
                                     </button>
                                 </Link>
 
-                                {/* ✅ Delete Button */}
                                 <button
                                     onClick={() => handleDelete(pkag._id)}
                                     className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded cursor-pointer"
