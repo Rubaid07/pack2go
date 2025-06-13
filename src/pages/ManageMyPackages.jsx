@@ -1,21 +1,28 @@
-import React, { useEffect, useState, use } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
-import { Link } from "react-router";
+import { Link } from "react-router"; // ✅ fix import
+import useAxiosSecure from "../hook/useAxiosSecure";
+import Loading from "../components/Loading";
 
 const ManageMyPackages = () => {
-    const { user } = use(AuthContext);
+    const { user } = useContext(AuthContext);
     const [packages, setPackages] = useState([]);
     const [loading, setLoading] = useState(true);
+    const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_API_URL}/my-packages?email=${user.email}`)
-            .then(res => res.json())
-            .then(data => {
-                setPackages(data);
+        if (!user?.email) return;
+        axiosSecure.get(`/my-packages?email=${user.email}`)
+            .then(res => {
+                setPackages(res.data);
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error("Failed to fetch packages:", err);
                 setLoading(false);
             });
-    }, [user.email]);
+    }, [user?.email, axiosSecure]);
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -28,16 +35,13 @@ const ManageMyPackages = () => {
             color: '#fff'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`${import.meta.env.VITE_API_URL}/packages/${id}`, {
-                    method: "DELETE"
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.deletedCount > 0) {
+                axiosSecure.delete(`/packages/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
                             Swal.fire({
                                 position: "center",
                                 icon: "success",
-                                title: "Booking confirmed",
+                                title: "Package deleted successfully",
                                 showConfirmButton: false,
                                 timer: 1500,
                                 background: '#1f2937',
@@ -50,34 +54,47 @@ const ManageMyPackages = () => {
         });
     };
 
+    if (loading) return <Loading />;
+
     return (
         <div className="max-w-6xl mx-auto px-4 py-10">
-            <h2 className="text-3xl font-semibold bg-gradient-to-r  from-teal-400 to-teal-600 bg-clip-text text-transparent w-max mb-6">Manage My Packages</h2>
+            <h2 className="text-3xl font-semibold bg-gradient-to-r from-teal-400 to-teal-600 bg-clip-text text-transparent w-max mb-6">Manage My Packages</h2>
 
-            {loading ? (
-                <p>Loading your packages...</p>
-            ) : packages.length === 0 ? (
+            {packages.length === 0 ? (
                 <p>You haven't added any packages yet.</p>
             ) : (
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {packages.map(pkag => (
-                        <div key={pkag._id} className="bg-base-200 dark:bg-base-100 p-4 rounded shadow-lg">
+                        <div key={pkag._id} className="bg-base-200 card-theme dark:bg-base-100 p-4 rounded shadow-lg">
                             <img src={pkag.image} alt={pkag.tour_name} className="w-full h-48 object-cover rounded mb-3" />
                             <h3 className="text-xl font-bold">{pkag.tour_name}</h3>
-                            <p className="text-sm text text-gray-500">BDT {pkag.price}</p>
-                            <p className="text-sm text text-gray-500">Departure Date: {pkag.departure_date}</p>
-                            <p className="text-sm text text-gray-500">Departure Location: {pkag.departure_location}</p>
-                            <p className="text-sm text text-gray-500">Destination: {pkag.destination}</p>
-                            <div className="mt-4 flex gap-2">
+                            <p className="text-sm text-gray-500 text">BDT {pkag.price}</p>
+                            <p className="text-sm text-gray-500 text">Departure Date: {pkag.departure_date}</p>
+                            <p className="text-sm text-gray-500 text">Departure Location: {pkag.departure_location}</p>
+                            <p className="text-sm text-gray-500 text">Destination: {pkag.destination}</p>
+
+                            <div className="mt-4 flex flex-wrap gap-2">
+                                {/* ✅ View Details Button */}
+                                <Link to={`/package/${pkag._id}`}>
+                                    <button className="bg-teal-500 hover:bg-teal-600 text-white px-4 py-1 rounded cursor-pointer">
+                                        View
+                                    </button>
+                                </Link>
+
+                                {/* ✅ Edit Package Button */}
+                                <Link to={`/edit-package/${pkag._id}`}>
+                                    <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded cursor-pointer">
+                                        Edit
+                                    </button>
+                                </Link>
+
+                                {/* ✅ Delete Button */}
                                 <button
                                     onClick={() => handleDelete(pkag._id)}
-                                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 cursor-pointer rounded"
+                                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded cursor-pointer"
                                 >
                                     Delete
                                 </button>
-                                <Link to={`/edit-package/${pkag._id}`}>
-                                    <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded cursor-pointer">Edit</button>
-                                </Link>
                             </div>
                         </div>
                     ))}

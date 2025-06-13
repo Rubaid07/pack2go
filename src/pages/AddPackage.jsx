@@ -1,12 +1,13 @@
 import React, { use } from 'react';
-import axios from 'axios';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../provider/AuthProvider';
 import { useNavigate } from 'react-router';
+import useAxiosSecure from '../hook/useAxiosSecure';
 
 const AddPackage = () => {
   const { user } = use(AuthContext);
   const navigate= useNavigate()
+  const axiosSecure = useAxiosSecure()
 
   const handleAddPackage = (e) => {
     e.preventDefault();
@@ -22,7 +23,7 @@ const AddPackage = () => {
       created_at: new Date()
     };
 
-    axios.post(`${import.meta.env.VITE_API_URL}/packages`, newPackage)
+    axiosSecure.post(`${import.meta.env.VITE_API_URL}/packages`, newPackage)
       .then(res => {
         if (res.data.insertedId) {
           Swal.fire({

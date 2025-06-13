@@ -3,11 +3,13 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useParams, useNavigate } from 'react-router';
 import Loading from '../components/Loading';
+import useAxiosSecure from '../hook/useAxiosSecure';
 
 const EditPackage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [pkg, setPkg ]  = useState(null)
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_API_URL}/packages/${id}`)
@@ -23,14 +25,14 @@ const EditPackage = () => {
       image: form.image.value,
       duration: form.duration.value,
       departure_location: form.departure_location.value,
-      destination_location: form.destination_location.value,
+      destination: form.destination.value,
       price: form.price.value,
       departure_date: form.departure_date.value,
       contact_no: form.contact_no.value,
       package_details: form.package_details.value,
     }
 
-    axios.put(`${import.meta.env.VITE_API_URL}/packages/${id}`, updatePkg)
+    axiosSecure.put(`${import.meta.env.VITE_API_URL}/packages/${id}`, updatePkg)
       .then(res => {
         if (res.data.modifiedCount > 0) {
           Swal.fire({
@@ -117,7 +119,7 @@ const EditPackage = () => {
             <label className="block text-sm font-medium text-gray-500 mb-1">Destination</label>
             <input 
               type="text"
-              name="destination_location"
+              name="destination"
               defaultValue={pkg.destination}
               
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
