@@ -3,7 +3,7 @@ import logoo from "../assets/logoo.png"
 import { Link } from 'react-router';
 const Footer = () => {
   return (
-    <footer className="bg-base-100 card-theme pt-12 pb-6">
+    <footer className="bg-base-200 card-theme pt-12 pb-6">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
@@ -70,20 +70,12 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 my-6"></div>
+        <div className="border-t border-gray-300 my-6"></div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 footer-text text-sm mb-4 md:mb-0">
+      
+          <p className="text-gray-500 text-center text-sm mb-4 md:mb-0">
             &copy; {new Date().getFullYear()} Pack2Go. All rights reserved.
           </p>
-          <div className="flex space-x-4">
-            <img 
-              src="https://i.ibb.co/Qfvn4z6/payment-methods.png" 
-              alt="Payment Methods" 
-              className="h-8 opacity-80 hover:opacity-100 transition"
-            />
-          </div>
-        </div>
       </div>
     </footer>
   );

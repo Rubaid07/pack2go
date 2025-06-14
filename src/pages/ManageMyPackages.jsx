@@ -65,9 +65,12 @@ const ManageMyPackages = () => {
             ) : (
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {packages.map(pkag => (
-                        <div key={pkag._id} className="bg-base-200 card-theme dark:bg-base-100 p-4 rounded shadow-lg">
-                            <img src={pkag.image} alt={pkag.tour_name} className="w-full h-48 object-cover rounded mb-3" />
-                            <h3 className="text-xl font-bold">{pkag.tour_name}</h3>
+                        <div key={pkag._id} className="bg-base-200 card-theme dark:bg-base-100 rounded-xl overflow-hidden shadow-lg">
+                            <div className="relative h-48 overflow-hidden">
+                                <img src={pkag.image} alt={pkag.tour_name} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                            </div>
+                           <div className="p-4">
+                             <h3 className="text-xl font-bold">{pkag.tour_name}</h3>
                             <p className="text-sm text-gray-500 text">BDT {pkag.price}</p>
                             <p className="text-sm text-gray-500 text">Departure Date: {pkag.departure_date}</p>
                             <p className="text-sm text-gray-500 text">Departure Location: {pkag.departure_location}</p>
@@ -93,6 +96,7 @@ const ManageMyPackages = () => {
                                     Delete
                                 </button>
                             </div>
+                           </div>
                         </div>
                     ))}
                 </div>

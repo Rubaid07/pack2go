@@ -1,45 +1,28 @@
-import { useNavigate } from 'react-router';
-import { FiHome, FiSearch, FiMeh } from 'react-icons/fi';
+import { Link } from 'react-router';
+import { FaHome } from 'react-icons/fa';
+import Lottie from 'lottie-react';
+import error from '../assets/error.json'
 
-const NotFound = () => {
-  const navigate = useNavigate();
-
+const NotFoundPage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-base-100 p-4 text-center">
-      <div className="max-w-md mx-auto bg-base-200 rounded-xl shadow-2xl overflow-hidden p-8">
-        <div className="flex flex-col items-center">
-          <div className="relative mb-6">
-            <div className="w-24 h-24 rounded-full bg-red-100 flex items-center justify-center">
-              <FiMeh className="text-red-500 dark:text-red-400 text-4xl" />
-            </div>
-            <div className="absolute -inset-2 border-4 border-red-200 rounded-full animate-pulse"></div>
-          </div>
-          
-          <h1 className="text-5xl font-bold text-gray-600 mb-4">404</h1>
-          <h2 className="text-2xl font-semibold text-gray-700 mb-2">Page Not Found</h2>
-          
-          <p className="text-gray-500 dark:text-gray-400 mb-8">
-            Oops! The page you're looking for doesn't exist or has been moved.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 w-full">
-            <button
-              onClick={() => navigate('/')}
-              className="flex-1 flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-700 cursor-pointer text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300"
-            >
-              <FiHome /> Go Home
-            </button>
-            <button
-              onClick={() => navigate(-1)}
-              className="flex-1 flex items-center justify-center gap-2 bg-gray-600 hover:bg-gray-500 cursor-pointer text-gray-800 dark:text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300"
-            >
-              <FiSearch /> Go Back
-            </button>
-          </div>
-        </div>
-      </div>
+    <div className="min-h-screen flex flex-col items-center justify-center py-12 px-4 text-center bg-white dark:bg-gray-900">
+      <Lottie className='h-50' animationData={error} loop={true}></Lottie>
+
+      <h1 className="text-4xl mt-5 font-bold text-gray-800 dark:text-white mb-4">
+        Oops! You seem lost in the Himalayas.
+      </h1>
+      <p className="text-lg text-gray-600 dark:text-gray-300 max-w-md mx-auto mb-8">
+        The trail you're looking for doesn't exist. Let's guide you back home.
+      </p>
+
+      <Link 
+        to="/" 
+        className="flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-8 py-3 rounded-lg font-medium transition-colors shadow-md"
+      >
+        <FaHome /> Back to Home
+      </Link>
     </div>
   );
 };
 
-export default NotFound;
+export default NotFoundPage;

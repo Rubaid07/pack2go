@@ -15,8 +15,8 @@ const Home = () => {
              <LocalGuides></LocalGuides>
              <SustainableTravel></SustainableTravel>
              <Offers></Offers>
-             <SeasonalSpecials></SeasonalSpecials> 
              <TravelersJournal></TravelersJournal>
+             <SeasonalSpecials></SeasonalSpecials> 
         </div>
     );
 };
