@@ -1,6 +1,5 @@
 import { Link, NavLink } from 'react-router';
-import logo from '../assets/logo.png';
-import logoText from '../assets/logo-text.png';
+import logoo from '../assets/logoo.png';
 import { use, useEffect, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import { CgLogOut } from 'react-icons/cg';
@@ -60,8 +59,7 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to="/" className='flex items-center'>
-            <img className='w-8 h-8 md:w-10 md:h-10' src={logo} alt="Logo" />
-            <img className='w-24 md:w-32' src={logoText} alt="Brand Name" />
+            <img className='w-24 md:w-35' src={logoo} alt="Brand Name" />
           </Link>
         </div>
         <div className="navbar-end gap-4">

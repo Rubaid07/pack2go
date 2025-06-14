@@ -8,33 +8,13 @@
 .montserrat {
   font-family: "Montserrat", sans-serif;
 }
-
 .open-sans {
   font-family: "Open Sans", sans-serif;
 }
 
-.text-active {
-  color: #58abfe;
-  text-decoration: underline;
-  text-underline-offset: 7px;
-  font-weight: 500;
-  transition: 0.3s ease;
+[data-theme="light"] .footer-text {
+  @apply text-gray-800 hover:text-teal-400
 }
-
-.text-inactive {
-  color: gray;
-  font-weight: 500;
-  transition: 0.3s ease;
-}
-
-[data-theme="dark"] .text-inactive {
-  color: #ffffff;
-}
-
-.text-inactive:hover {
-  color: #3996f2;
-}
-
 [data-theme="dark"] .card-theme {
   @apply bg-gradient-to-r from-[#1a2434] to-[#223048];
 }

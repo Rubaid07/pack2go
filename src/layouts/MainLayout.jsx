@@ -10,7 +10,7 @@ const MainLayout = () => {
         <div>
             <ScrollToTop></ScrollToTop>
             <Navbar></Navbar>
-            <div className='open-sans'>
+            <div className='open-sans min-h-[calc(100vh-430px)]'>
                 {
                     navigation.state === "loading" ? <Loading></Loading> : <Outlet></Outlet>
                 }
