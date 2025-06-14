@@ -1,11 +1,11 @@
 import { formatDistanceToNow } from 'date-fns';
-import React from 'react';
 import { CiCalendarDate, CiLocationOn } from 'react-icons/ci';
 import { IoTimeOutline } from 'react-icons/io5';
 import { TbCoinTaka } from 'react-icons/tb';
 import { Link } from 'react-router';
 
 const PackageCard = ({ pkg }) => {
+    const isExpired = new Date(pkg.departure_date) < new Date()
     return (
         <div
             className="card-theme bg-base-200 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl"
@@ -23,17 +23,26 @@ const PackageCard = ({ pkg }) => {
             </div>
 
             <div className="p-6">
-                <div className="flex items-center space-x-3 mb-4">
-                    <img
-                        src={pkg.guide_photo}
-                        alt={pkg.guide_name}
-                        className="w-10 h-10 rounded-full border-2 border-teal-400"
-                    />
+                <div className='flex justify-between'>
+                    <div className="flex items-center space-x-3 mb-4">
+                        <img
+                            src={pkg.guide_photo}
+                            alt={pkg.guide_name}
+                            className="w-10 h-10 rounded-full border-2 border-teal-400"
+                        />
+                        <div>
+                            <p className="text-teal-600 dark:text-teal-400">{pkg.guide_name}</p>
+                            <p className="text-xs text-gray-500 mb-2">
+                                Posted {formatDistanceToNow(new Date(pkg.created_at), { addSuffix: true })}
+                            </p>
+                        </div>
+                    </div>
                     <div>
-                        <p className="text-teal-600 dark:text-teal-400">{pkg.guide_name}</p>
-                        <p className="text-xs text-gray-500 mb-2">
-                            Posted {formatDistanceToNow(new Date(pkg.created_at), { addSuffix: true })}
-                        </p>
+                        {isExpired && (
+                            <span className="text-xs bg-red-100 text-red-500 px-2 py-1 rounded-full font-semibold">
+                                Expired
+                            </span>
+                        )}
                     </div>
                 </div>
 

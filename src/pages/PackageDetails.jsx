@@ -45,7 +45,7 @@ const PackageDetails = () => {
       </div>
     );
   }
-
+  const isExpired = new Date(pakg.departure_date) < new Date()
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
       <button
@@ -100,7 +100,14 @@ const PackageDetails = () => {
                   <CiCalendarDate size={20} className="text-teal-500 mt-1 mr-3" />
                   <div>
                     <p className="font-medium">Departure Date</p>
-                    <p className="text-gray-500">{pakg.departure_date}</p>
+                   <div className="flex gap-3">
+                     <p className="text-gray-500">{pakg.departure_date}</p>
+                    {isExpired && (
+                      <span className="text-xs bg-red-100 text-red-500 px-2 py-1 rounded-full font-semibold">
+                        Expired
+                      </span>
+                    )}
+                   </div>
                   </div>
                 </div>
 
@@ -152,21 +159,21 @@ const PackageDetails = () => {
             </div>
           </div>
           <div className="mt-8">
-            
+
             <h3 className="text-xl font-semibold mb-4">Package Details</h3>
             <div className="text text-gray-500 whitespace-pre-line">
               {pakg.package_details}
             </div>
-              {user?.email !== pakg.guide_email && (
-                    <div className="mt-10">
-                      <button
-                        onClick={() => navigate(`/booking/${pakg._id}`)}
-                        className="bg-teal-600 hover:bg-teal-700 text-white font-medium cursor-pointer py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
-                      >
-                        Book Now
-                      </button>
-                    </div>
-                  )}
+            {user?.email !== pakg.guide_email && (
+              <div className="mt-10">
+                <button
+                  onClick={() => navigate(`/booking/${pakg._id}`)}
+                  className="bg-teal-600 hover:bg-teal-700 text-white font-medium cursor-pointer py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                >
+                  Book Now
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
