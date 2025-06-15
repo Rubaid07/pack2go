@@ -1,12 +1,64 @@
-# React + Vite
+# 🌍 Pack2Go - Tour Package Booking Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Pack2Go** is a complete tour package booking platform where users can explore, book, and manage travel packages. Built with the MERN stack and Firebase Authentication, this project focuses on modern UX, secure bookings, and dynamic content management.
 
-Currently, two official plugins are available:
+## 🌐 Live Link
+🔗 [Live Demo](https://tasktide07.web.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🔐 Authentication
+- Firebase Authentication (Email/Password, Google Login)
+- Protected routes with JWT
+
+### 🧳 Packages
+- 📋 **Post & Manage Packages**: Users can add, update, or delete Packages. All CRUD operations are secured by authentication.
+- Explore curated travel packages
+- View detailed package pages with price, location, duration, etc.
+- Limited time offers & seasonal specials
+
+### 📦 Bookings
+- Book packages securely (authenticated users only)
+- My Bookings page (view)
+- Guide can manage all bookings
+
+### ⚙️ Guide Features
+- Add/Edit/Delete packages
+- Manage all bookings
+- View platform stats
+
+
+- 🛡️ **Protected Routes**: Pages like My Bookings, Add Package and Manage My Packages are accessible only after login.
+- 📱 **Responsive Design**: Fully responsive for mobile, tablet, and desktop views.
+- ☀️🌙 **Dark/Light Theme Toggle**: Seamless theme switching.
+- ✨ **Bonus Features**: Integrated SweetAlert2 & Toast for notifications, and a clean UI with React & Tailwind.
+
+---
+
+## 🗂️ Tech Stack
+
+- **Frontend**: React, React Router, Tailwind CSS, DaisyUI, Axios
+- **Backend**: Node.js, Express.js, MongoDB, CORS
+- **Auth & DB**: Firebase Auth, MongoDB, Firebase JWT Token
+
+---
+
+## NPM Packages Used
+
+```bash
+"react-router"
+"firebase"
+"react-toastify"
+"sweetalert2"
+"daisyui"
+"react-icons"
+"react-slick"
+"slick-carousel"
+"framer-motion"
+"date-fns"
+"axios"
+"lottie-react"
+"react-countup"
+"tailwindcss"
