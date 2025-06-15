@@ -12,7 +12,7 @@ const TravelersJournal = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div className="bg-white dark:bg-base-100 p-8 rounded-xl shadow-md">
+          <div className="bg-base-100 p-8 rounded-xl shadow-md">
             <div className="flex items-center mb-6">
               <img 
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsiHYAT9_gk5w_1J5JmhhT4c_i9sj9bt4Wag&s" 
@@ -38,7 +38,7 @@ const TravelersJournal = () => {
             </div>
           </div>
 
-          <div className="bg-white dark:bg-base-100 p-8 rounded-xl shadow-md">
+          <div className="bg-base-100 p-8 rounded-xl shadow-md">
             <div className="flex items-center mb-6">
               <img 
                 src="https://randomuser.me/api/portraits/men/77.jpg" 

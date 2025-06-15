@@ -29,7 +29,7 @@
 - Manage all bookings
 - View platform stats
 
-
+### 🧑‍💻 Others
 - 🛡️ **Protected Routes**: Pages like My Bookings, Add Package and Manage My Packages are accessible only after login.
 - 📱 **Responsive Design**: Fully responsive for mobile, tablet, and desktop views.
 - ☀️🌙 **Dark/Light Theme Toggle**: Seamless theme switching.
