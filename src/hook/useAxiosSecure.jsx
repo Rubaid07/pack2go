@@ -1,40 +1,43 @@
 import axios from "axios";
-import { useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+
+const axiosInstance = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+});
 
 const useAxiosSecure = () => {
-  const navigate = useNavigate();
-
-  const axiosSecure = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
-    withCredentials: true,
-  });
+  const { user, handleSignOutUser, loading } = useContext(AuthContext);
 
   useEffect(() => {
-    axiosSecure.interceptors.request.use(
-      (config) => {
-        const token = localStorage.getItem('access-token');
-        if (token) {
-          config.headers.Authorization = `Bearer ${token}`;
+    if (!loading && user?.accessToken) {
+      const requestInterceptor = axiosInstance.interceptors.request.use(
+        (config) => {
+          config.headers.Authorization = `Bearer ${user.accessToken}`;
+          return config;
         }
-        return config;
-      },
-      (error) => {
-        return Promise.reject(error);
-      }
-    );
+      );
 
-    axiosSecure.interceptors.response.use(res => res,(error) => {
-        if (error.response?.status === 401 || error.response?.status === 403) {
-          localStorage.removeItem('access-token');
-          navigate('/signin');
+      const responseInterceptor = axiosInstance.interceptors.response.use(
+        (res) => res,
+        (err) => {
+          if (err?.response?.status === 401 || err?.response?.status === 403) {
+            handleSignOutUser()
+              .then(() => console.log("Signed out due to invalid token"))
+              .catch(console.error);
+          }
+          return Promise.reject(err);
         }
-        return Promise.reject(error);
-      }
-    );
-  }, [navigate, axiosSecure]);
+      );
 
-  return axiosSecure;
+      return () => {
+        axiosInstance.interceptors.request.eject(requestInterceptor);
+        axiosInstance.interceptors.response.eject(responseInterceptor);
+      };
+    }
+  }, [user, loading]);
+
+  return axiosInstance;
 };
 
 export default useAxiosSecure;
