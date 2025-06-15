@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
   };
 
   // Sign out + clear user
-  const handleSignOutUser = () => {
+  const logOut = () => {
     return signOut(auth).then(() => setUser(null));
   };
 
@@ -70,7 +70,7 @@ const AuthProvider = ({ children }) => {
     signInWithGoogle,
     createUser,
     updateUser,
-    handleSignOutUser,
+    logOut,
   };
 
   return (

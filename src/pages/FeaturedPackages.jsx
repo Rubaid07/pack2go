@@ -2,45 +2,41 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import PackageCard from "./PackageCard";
 import Loading from "../components/Loading";
+import useAxiosSecure from "../hook/useAxiosSecure";
 
 const FeaturedPackages = () => {
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/packages/featured`)
-      .then(res => res.json())
-      .then(data => {
-        setPackages(data);
+    axiosSecure.get("/packages/featured")
+      .then(res => {
+        setPackages(res.data);
         setLoading(false);
       })
       .catch(error => {
         console.error("Failed to fetch packages:", error);
         setLoading(false);
       });
-  }, []);
+  }, [axiosSecure]);
 
-  if (loading) return <Loading></Loading>
+  if (loading) return <Loading />;
+
   return (
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-3">
-            Featured Tour Packages
-          </h2>
-          <p className=" max-w-xl mx-auto text-xl text-gray-500">
+          <h2 className="text-3xl font-bold mb-3">Featured Tour Packages</h2>
+          <p className="max-w-xl mx-auto text-xl text-gray-500">
             Discover our most popular adventure packages
           </p>
         </div>
-
-
-
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {packages.map(pkg => (
-            <PackageCard key={pkg._id} pkg={pkg}></PackageCard>
+            <PackageCard key={pkg._id} pkg={pkg} />
           ))}
         </div>
-
         <div className="mt-16 text-center">
           <Link to="/packages">
             <button className="px-6 py-3 font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-teal-500 to-teal-700 hover:from-teal-700 hover:to-teal-500 transition duration-400 cursor-pointer">
