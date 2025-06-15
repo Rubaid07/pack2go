@@ -3,7 +3,7 @@
 **Pack2Go** is a complete tour package booking platform where users can explore, book, and manage travel packages. Built with the MERN stack and Firebase Authentication, this project focuses on modern UX, secure bookings, and dynamic content management.
 
 ## 🌐 Live Link
-🔗 [Live Demo](https://tasktide07.web.app)
+🔗 [Live Demo](https://pack2go07.web.app)
 
 ---
 
