@@ -170,7 +170,7 @@ const PackageDetails = () => {
                   onClick={() => navigate(`/booking/${pakg._id}`)}
                   className={`font-medium py-3 px-8 rounded-lg shadow-md transition-all duration-300 ${isExpired
                       ? "bg-gray-400 cursor-not-allowed text-white"
-                      : "bg-teal-600 hover:bg-teal-700 text-white hover:shadow-lg"
+                      : "bg-teal-600 hover:bg-teal-700 text-white hover:shadow-lg cursor-pointer"
                     }`}
                   disabled={isExpired}
                 >

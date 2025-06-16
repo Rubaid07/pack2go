@@ -23,7 +23,8 @@ const AllPackages = () => {
   };
 
   const filter = packages.filter(pkg =>
-    pkg.tour_name.toLowerCase().includes(search)
+    pkg.tour_name.toLowerCase().includes(search) ||
+    pkg.destination.toLowerCase().includes(search)
   );
 
   if (loading) return <Loading />;
@@ -36,7 +37,7 @@ const AllPackages = () => {
         </h2>
         <input
           type="text"
-          placeholder="Search by tour name..."
+          placeholder="Search..."
           onChange={handleSearch}
           className="input input-bordered w-full max-w-md mt-4 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
         />
