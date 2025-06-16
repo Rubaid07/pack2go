@@ -141,7 +141,7 @@ const AddPackage = () => {
           <div>
             <label className="block text-sm font-medium text-gray-500 mb-1">Contact Number</label>
             <input 
-              type="text" 
+              type="number" 
               name="contact_no" 
               placeholder="+8801XXXXXXXXX" 
               className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
