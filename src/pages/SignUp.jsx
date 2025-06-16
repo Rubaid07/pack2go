@@ -42,8 +42,7 @@ const SignUp = () => {
                 setUser(user)
             })
             .catch(error => {
-                const errorMessage = error.message
-                toast.error(errorMessage)
+                toast.error(error.message)
             })
     }
     const handleGoogleSignIn = () => {
