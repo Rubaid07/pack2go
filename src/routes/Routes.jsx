@@ -13,6 +13,9 @@ import Booking from "../pages/Booking";
 import ManageMyPackages from "../pages/ManageMyPackages";
 import EditPackage from "../pages/EditPackage";
 import NotFound from "../pages/NotFound";
+import PrivacyPolicy from "../components/PrivacyPolicy";
+import TermsAndConditions from "../components/TermsAndConditions";
+import SafetyGuidelines from "../components/SafetyGuidelines";
 // import GuideBookings from "../pages/GuideBookings";
 
 export const router = createBrowserRouter([
@@ -32,6 +35,18 @@ export const router = createBrowserRouter([
       {
         path: '/about',
         Component: AboutUs
+      },
+      {
+        path: '/privacy',
+        Component: PrivacyPolicy
+      },
+      {
+        path: '/terms',
+        Component: TermsAndConditions
+      },
+      {
+        path: '/guidelines',
+        Component: SafetyGuidelines
       },
       {
         path: '/my-booking',

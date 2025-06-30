@@ -106,14 +106,9 @@ const Offers = () => {
                       {offer.daysLeft > 0 ? `${offer.daysLeft} Days` : 'Ends Today!'}
                     </div>
                   </div>
-                  {offer.daysLeft <= 3 && (
-                    <div className="mt-2 text-xs text-red-400 font-medium">
-                      Almost gone — book while you still can!
-                    </div>
-                  )}
                 </div>
 
-                <button className="w-full bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white py-3 cursor-pointer rounded-lg font-medium transition-all shadow-md hover:shadow-lg">
+                <button className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 cursor-pointer">
                   Yes! Take Me There
                 </button>
               </div>

@@ -74,7 +74,7 @@ const LocalGuides = () => {
         </div>
 
         <div className="text-center mt-10">
-          <button className="px-6 py-3 bg-teal-500 text-white rounded-lg font-medium hover:bg-teal-600 transition cursor-pointer">
+          <button className="px-6 py-3 border-2 border-teal-500 text-teal-500 rounded-lg font-medium hover:bg-teal-500 hover:text-white transition flex items-center mx-auto cursor-pointer">
             Become a Guide
           </button>
         </div>

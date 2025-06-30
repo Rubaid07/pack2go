@@ -124,7 +124,7 @@ const AboutPage = () => {
                 <h2 className="text-3xl font-bold mb-4">Start Your Next Journey</h2>
                 <p className="text-gray-600 mb-6">Explore, connect, and book the most authentic travel experiences in Bangladesh.</p>
                 <Link to="/packages">
-                    <button className="bg-gradient-to-r from-teal-500 to-teal-700 hover:from-teal-700 hover:to-teal-500 cursor-pointer transition duration-400 px-6 py-3 rounded font-semibold shadow text-white">
+                    <button className="px-6 py-3 border-2 border-teal-500 text-teal-500 rounded-lg font-medium hover:bg-teal-500 hover:text-white transition flex items-center mx-auto cursor-pointer">
                         Explore All Packages
                     </button>
                 </Link>

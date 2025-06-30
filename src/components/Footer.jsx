@@ -14,17 +14,14 @@ const Footer = () => {
               Your trusted partner for authentic travel experiences in Bangladesh since 2010.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 footer-text hover:text-teal-400 transition">
+              <a to="https://facebook.com" target='_blank' className="cursor-pointer text-gray-400 footer-text hover:text-teal-400 transition">
                 <FaFacebook size={20} />
               </a>
-              <a href="#" className="text-gray-400 footer-text hover:text-teal-400 transition">
+              <a to="https://twitter.com" target='_blank' className="cursor-pointer text-gray-400 footer-text hover:text-teal-400 transition">
                 <FaTwitter size={20} />
               </a>
-              <a href="#" className="text-gray-400 footer-text hover:text-teal-400 transition">
+              <a to="https://instagram.com" target='_blank' className="cursor-pointer text-gray-400 footer-text hover:text-teal-400 transition">
                 <FaInstagram size={20} />
-              </a>
-              <a href="#" className="text-gray-400 footer-text hover:text-teal-400 transition">
-                <FaTripadvisor size={20} />
               </a>
             </div>
           </div>
@@ -35,19 +32,15 @@ const Footer = () => {
               <li><Link to="/" className="text-gray-400 footer-text hover:text-teal-400 transition">Home</Link></li>
               <li><Link to="packages" className="text-gray-400 footer-text hover:text-teal-400 transition">All Packages</Link></li>
               <li><Link to="about" className="text-gray-400 footer-text hover:text-teal-400 transition">About Us</Link></li>
-              <li><a href="#" className="text-gray-400 footer-text hover:text-teal-400 transition">Contact</a></li>
-              <li><a href="#" className="text-gray-400 footer-text hover:text-teal-400 transition">Blog</a></li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold mb-4">Support</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 footer-text hover:text-teal-400 transition">FAQs</a></li>
-              <li><a href="#" className="text-gray-400 footer-text hover:text-teal-400 transition">Privacy Policy</a></li>
-              <li><a href="#" className="text-gray-400 footer-text hover:text-teal-400 transition">Terms & Conditions</a></li>
-              <li><a href="#" className="text-gray-400 footer-text hover:text-teal-400 transition">Refund Policy</a></li>
-              <li><a href="#" className="text-gray-400 footer-text hover:text-teal-400 transition">Safety Guidelines</a></li>
+              <li><Link to="privacy" className="text-gray-400 footer-text hover:text-teal-400 transition">Privacy Policy</Link></li>
+              <li><Link to="terms" className="text-gray-400 footer-text hover:text-teal-400 transition">Terms & Conditions</Link></li>
+              <li><Link to="guidelines" className="text-gray-400 footer-text hover:text-teal-400 transition">Safety Guidelines</Link></li>
             </ul>
           </div>
 
@@ -60,7 +53,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <FaPhone className="text-teal-400 mr-3" />
-                <span className="text-gray-400 footer-text">+880 1711 123456</span>
+                <span className="text-gray-400 footer-text">+880 1111 123456</span>
               </li>
               <li className="flex items-center">
                 <FaEnvelope className="text-teal-400 mr-3" />

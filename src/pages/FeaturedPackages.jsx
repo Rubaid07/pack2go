@@ -39,7 +39,7 @@ const FeaturedPackages = () => {
         </div>
         <div className="mt-16 text-center">
           <Link to="/packages">
-            <button className="px-6 py-3 font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-teal-500 to-teal-700 hover:from-teal-700 hover:to-teal-500 transition duration-400 cursor-pointer">
+            <button className="px-6 py-3 border-2 border-teal-500 text-teal-500 rounded-lg font-medium hover:bg-teal-500 hover:text-white transition flex items-center mx-auto cursor-pointer">
               Explore All Packages
             </button>
           </Link>

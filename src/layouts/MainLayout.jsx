@@ -29,7 +29,7 @@ const MainLayout = () => {
         <div>
             <ScrollToTop></ScrollToTop>
             <Navbar></Navbar>
-            <div className='open-sans min-h-[calc(100vh-430px)]'>
+            <div className='open-sans min-h-[calc(100vh-418px)]'>
                <Outlet></Outlet>
             </div>
             <Footer></Footer>
