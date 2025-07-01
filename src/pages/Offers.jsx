@@ -54,7 +54,7 @@ const Offers = () => {
           {offers.map((offer) => (
             <div
               key={offer.id}
-              className="bg-base-200 card-theme rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 relative"
+              className="bg-base-200 card-theme rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-150 relative"
             >
               <div className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium z-10">
                 {offer.discount}
@@ -62,6 +62,7 @@ const Offers = () => {
 
               <div className="relative h-48 overflow-hidden">
                 <img
+                  loading="lazy"
                   src={offer.image}
                   alt={offer.title}
                   className="w-full h-full object-cover"

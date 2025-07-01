@@ -1,4 +1,3 @@
-import CountUp from 'react-countup';
 import { FaLeaf, FaRecycle, FaHandsHelping } from 'react-icons/fa';
 
 const SustainableTravel = () => {
@@ -15,9 +14,10 @@ const SustainableTravel = () => {
         <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
           <div>
             <img 
-              src="https://news.cgtn.com/news/2020-10-14/Splendid-sea-of-clouds-at-Mount-Jizhuo-in-SW-China-UzWQtoTSVO/img/979fbc2f12bb4effbfda5203346e1208/979fbc2f12bb4effbfda5203346e1208-1920.jpeg" 
+            loading="lazy"
+              src="https://i.postimg.cc/Gt1fSNKz/aaaaa.jpg" 
               alt="Sustainable travel" 
-              className="rounded-lg shadow-lg w-full h-auto"
+              className="rounded-lg w-full h-auto"
             />
           </div>
           <div>
@@ -67,24 +67,23 @@ const SustainableTravel = () => {
             </div>
           </div>
         </div>
-
         <div className="bg-base-200 p-8 rounded-lg shadow-md max-w-7xl mx-auto text-center">
           <h3 className="text-xl font-semibold mb-3">Our Impact in Numbers</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
             <div>
-              <div className="text-3xl font-bold text-teal-600"><CountUp end={25} enableScrollSpy="true"></CountUp>+</div>
+              <div className="text-3xl font-bold text-teal-600">25+</div>
               <div className="text-gray-500">Community Projects</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-teal-600"><CountUp end={5200} enableScrollSpy="true"></CountUp>+</div>
+              <div className="text-3xl font-bold text-teal-600">5200+</div>
               <div className="text-gray-500">Trees Planted</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-teal-600"><CountUp end={100} enableScrollSpy="true"></CountUp>%</div>
+              <div className="text-3xl font-bold text-teal-600">100%</div>
               <div className="text-gray-500">Plastic-Free Tours</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-teal-600">$<CountUp end={78} enableScrollSpy="true"></CountUp>K+</div>
+              <div className="text-3xl font-bold text-teal-600">$78K+</div>
               <div className="text-gray-500">Community Investment</div>
             </div>
           </div>
