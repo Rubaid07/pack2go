@@ -74,7 +74,7 @@ const Booking = () => {
 
                 <input readOnly value={pkg.departure_date} className="input w-full focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" />
                 <input
-                    type="text"
+                    type="number"
                     name="contact"
                     placeholder="Your Contact Number"
                     className="input w-full focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"

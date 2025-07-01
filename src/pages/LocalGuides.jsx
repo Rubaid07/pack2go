@@ -1,4 +1,5 @@
 import { FaStar, FaMapMarkerAlt } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 const guides = [
   {
@@ -50,11 +51,11 @@ const LocalGuides = () => {
                 <div className="ml-4">
                   <h3 className="font-semibold text-lg">{guide.name}</h3>
                   <div className="flex items-center text-yellow-400">
-                      <FaStar />
-                      <FaStar />
-                      <FaStar />
-                      <FaStar />
-                      <FaStar />
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
                     <span className="text-gray-500 ml-2 text-sm">
                       ({guide.reviews} reviews)
                     </span>
@@ -66,17 +67,19 @@ const LocalGuides = () => {
                 <span>{guide.location}</span>
               </div>
               <p className="text-gray-600 text mb-4">{guide.description}</p>
-              <button className="text-teal-500 font-medium flex items-center cursor-pointer hover:underline">
+              <Link to="packages" className="text-teal-500 font-medium flex items-center cursor-pointer hover:underline">
                 View Tours
-              </button>
+              </Link>
             </div>
           ))}
         </div>
 
         <div className="text-center mt-10">
-          <button className="px-6 py-3 border-2 border-teal-500 text-teal-500 rounded-lg font-medium hover:bg-teal-500 hover:text-white transition flex items-center mx-auto cursor-pointer">
-            Become a Guide
-          </button>
+          <Link to="add-package">
+            <button className="px-6 py-3 border-2 border-teal-500 text-teal-500 rounded-lg font-medium hover:bg-teal-500 hover:text-white transition flex items-center mx-auto cursor-pointer">
+              Become a Guide
+            </button>
+          </Link>
         </div>
       </div>
     </section>

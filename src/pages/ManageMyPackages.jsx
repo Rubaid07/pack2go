@@ -15,7 +15,7 @@ const ManageMyPackages = () => {
         if (!user?.email) return;
         axiosSecure.get(`/my-packages?email=${user.email}`)
             .then(res => {
-                setPackages(res.data);
+                setPackages(res.data.reverse());
                 setLoading(false);
             })
             .catch(err => {
