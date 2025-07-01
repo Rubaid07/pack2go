@@ -28,7 +28,12 @@ const MyBookings = () => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-10">
-      <h2 className="text-3xl font-semibold bg-gradient-to-r mx-auto from-teal-400 to-teal-600 bg-clip-text text-transparent w-max mb-6">My Bookings</h2>
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-3">My Bookings</h1>
+        <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          Keep an eye on your exciting travel plans and manage your bookings with ease — adventure awaits!
+        </p>
+      </div>
 
       {
         bookings.length === 0 ? (
@@ -47,10 +52,9 @@ const MyBookings = () => {
                   <p>Note: <span className="text-gray-500 text">{booking.notes || "None"}</span></p>
                   <p>Status:
                     <span className={
-                      `ml-2 px-2 py-1 rounded text-sm ${
-                        booking.status === "pending"
-                          ? "bg-yellow-200 text-yellow-800"
-                          : "bg-green-200 text-green-800"
+                      `ml-2 px-2 py-1 rounded text-sm ${booking.status === "pending"
+                        ? "bg-yellow-200 text-yellow-800"
+                        : "bg-green-200 text-green-800"
                       }`
                     }>
                       {booking.status}

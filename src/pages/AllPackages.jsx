@@ -72,11 +72,10 @@ const AllPackages = () => {
           </div>
 
           <div className="flex items-center gap-2">
-            <FiFilter className="h-5 w-5 text-gray-500" />
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="block w-full pl-3 pr-10 py-3 text-base border border-gray-300 rounded-lg bg-base-100 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200"
+              className="block w-full pl-3 pr-10 py-3 border border-gray-300 rounded-lg bg-base-100 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200"
             >
               <option value="">Sort by</option>
               <option value="name">Name (A-Z)</option>

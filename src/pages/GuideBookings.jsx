@@ -50,7 +50,13 @@ const GuideBookings = () => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-10">
-      <h2 className="text-3xl font-semibold bg-gradient-to-r mx-auto from-teal-400 to-teal-600 bg-clip-text text-transparent w-max mb-6">Booking Request</h2>
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-3">Booking Request</h1>
+        <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          Manage and respond to traveler booking requests for your guided tours. Help make every trip unforgettable.
+        </p>
+
+      </div>
 
       {
         bookings.length === 0 ? (
@@ -79,14 +85,14 @@ const GuideBookings = () => {
                   {
                     booking.status === "pending" && (
                       <button
-  onClick={() => {
-    console.log("clicked", booking._id);
-    handleConfirm(booking._id);
-  }}
-  className="mt-4 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded"
->
-  Confirm Booking
-</button>
+                        onClick={() => {
+                          console.log("clicked", booking._id);
+                          handleConfirm(booking._id);
+                        }}
+                        className="mt-4 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded"
+                      >
+                        Confirm Booking
+                      </button>
 
                     )
                   }
