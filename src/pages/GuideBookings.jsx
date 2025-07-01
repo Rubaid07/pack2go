@@ -70,7 +70,8 @@ const GuideBookings = () => {
               bookings.map((booking) => (
                 <div key={booking._id} className="bg-base-200 card-theme p-5 rounded shadow">
                   <h3 className="text-xl font-semibold">{booking.tour_name}</h3>
-                  <p>Buyer: <span className="text-gray-500 text">{booking.buyer_name} ({booking.buyer_email})</span></p>
+                  <p>Buyer: <span className="text-gray-500 text">{booking.buyer_name}</span></p>
+                  <p>Buyer Email: <span className="text-gray-500 text">{booking.buyer_email}</span></p>
                   <p>Buyer Contact: <span className="text-gray-500 text">{booking.buyer_contact}</span></p>
                   <p>Departure: <span className="text-gray-500 text">{booking.departure_location}</span></p>
                   <p>Destination: <span className="text-gray-500 text">{booking.destination}</span></p>

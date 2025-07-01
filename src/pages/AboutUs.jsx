@@ -122,7 +122,7 @@ const AboutPage = () => {
 
             <section className="text-center py-12">
                 <h2 className="text-3xl font-bold mb-4">Start Your Next Journey</h2>
-                <p className="text-gray-600 mb-6">Explore, connect, and book the most authentic travel experiences in Bangladesh.</p>
+                <p className="text-gray-500 mb-6">Explore, connect, and book the most authentic travel experiences in Bangladesh.</p>
                 <Link to="/packages">
                     <button className="px-6 py-3 border-2 border-teal-500 text-teal-500 rounded-lg font-medium hover:bg-teal-500 hover:text-white transition flex items-center mx-auto cursor-pointer">
                         Explore All Packages

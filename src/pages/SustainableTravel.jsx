@@ -13,21 +13,21 @@ const SustainableTravel = () => {
 
         <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
           <div>
-            <img 
-            loading="lazy"
-              src="https://i.postimg.cc/Gt1fSNKz/aaaaa.jpg" 
-              alt="Sustainable travel" 
+            <img
+              loading="lazy"
+              src="https://i.postimg.cc/Gt1fSNKz/aaaaa.jpg"
+              alt="Sustainable travel"
               className="rounded-lg w-full h-auto"
             />
           </div>
           <div>
             <h3 className="text-2xl font-semibold mb-4">Making a Positive Impact</h3>
             <p className="text-gray-600 text mb-6">
-              At Pack2Go, we believe travel should benefit both visitors and local communities. 
-              That's why we've partnered with grassroots organizations across Bangladesh to ensure 
+              At Pack2Go, we believe travel should benefit both visitors and local communities.
+              That's why we've partnered with grassroots organizations across Bangladesh to ensure
               our tours support environmental conservation and community development.
             </p>
-            
+
             <div className="space-y-4">
               <div className="flex items-start">
                 <div className="bg-teal-100 p-3 rounded-full mr-4">
@@ -40,7 +40,7 @@ const SustainableTravel = () => {
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
                 <div className="bg-teal-100 p-3 rounded-full mr-4">
                   <FaRecycle className="text-teal-600 text-xl" />
@@ -52,7 +52,7 @@ const SustainableTravel = () => {
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
                 <div className="bg-teal-100 p-3 rounded-full mr-4">
                   <FaHandsHelping className="text-teal-600 text-xl" />
