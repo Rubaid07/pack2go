@@ -1,4 +1,5 @@
 import { FiClock, FiTag, FiCalendar, FiMapPin } from 'react-icons/fi';
+import { Link } from 'react-router';
 
 const offers = [
   {
@@ -109,7 +110,7 @@ const Offers = () => {
                   </div>
                 </div>
 
-                <button className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 cursor-pointer">
+                <button onClick={() => document.getElementById('my_modal_2').showModal()} className="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 cursor-pointer">
                   Yes! Take Me There
                 </button>
               </div>
@@ -118,10 +119,11 @@ const Offers = () => {
         </div>
 
         <div className="text-center mt-12">
-          <button className="px-6 py-3 border-2 border-teal-500 text-teal-500 rounded-lg font-medium hover:bg-teal-500 hover:text-white transition flex items-center mx-auto cursor-pointer">
-            <FiTag className="mr-2" />
-            See All Available Deals
-          </button>
+          <Link to="packages">
+            <button className="px-6 py-3 border-2 border-teal-500 text-teal-500 rounded-lg font-medium hover:bg-teal-500 hover:text-white transition flex items-center mx-auto cursor-pointer">
+              <FiTag className="mr-2" />
+              See All Available Deals
+            </button></Link>
         </div>
       </div>
     </section>

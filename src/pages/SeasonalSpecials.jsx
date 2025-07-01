@@ -116,9 +116,20 @@ const SeasonalSpecials = () => {
                       </span>
                     )}
                   </div>
-                  <button className="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-lg transition cursor-pointer">
+                  <button onClick={() => document.getElementById('my_modal_2').showModal()} className="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-lg transition cursor-pointer">
                     Book Now
                   </button>
+                  <dialog id="my_modal_2" className="modal">
+                    <div className="modal-box">
+                      <h3 className="font-bold text-lg">Oops!</h3>
+                      <p className="py-4">Oops sorry! it is a demo project</p>
+                      <div className="modal-action">
+                        <form method="dialog">
+                          <button className="btn">Okey</button>
+                        </form>
+                      </div>
+                    </div>
+                  </dialog>
                 </div>
               </div>
             </div>

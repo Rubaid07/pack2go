@@ -26,25 +26,28 @@ const GuideBookings = () => {
   }, [user?.email, axiosSecure]);
 
   const handleConfirm = (id) => {
-    console.log("Calling PATCH for booking:", id);
-
     axiosSecure.patch(`/bookings/${id}`)
       .then(res => {
-        console.log("PATCH response:", res.data); // 🧪 Debug here
-
         if (res.data.modifiedCount > 0) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Booking is now mark as complete",
+            showConfirmButton: false,
+            timer: 1500,
+            background: "#f2f2f7",
+            color: "#333"
+          });
+
           setBookings(prev =>
             prev.map(b => b._id === id ? { ...b, status: "completed" } : b)
           );
-        } else {
-          console.warn("No booking was modified.");
         }
       })
       .catch(error => {
-        console.error("PATCH error:", error); // 🔥
+        console.error(error);
       });
   };
-
 
   if (loading) return <Loading />;
 
@@ -85,15 +88,11 @@ const GuideBookings = () => {
                   {
                     booking.status === "pending" && (
                       <button
-                        onClick={() => {
-                          console.log("clicked", booking._id);
-                          handleConfirm(booking._id);
-                        }}
-                        className="mt-4 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded"
+                        onClick={() => handleConfirm(booking._id)}
+                        className="mt-4 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded cursor-pointer"
                       >
                         Confirm Booking
                       </button>
-
                     )
                   }
                 </div>

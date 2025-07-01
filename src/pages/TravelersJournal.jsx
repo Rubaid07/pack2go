@@ -14,9 +14,9 @@ const TravelersJournal = () => {
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           <div className="bg-base-100 p-8 rounded-xl shadow-md">
             <div className="flex items-center mb-6">
-              <img 
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsiHYAT9_gk5w_1J5JmhhT4c_i9sj9bt4Wag&s" 
-                alt="Traveler" 
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsiHYAT9_gk5w_1J5JmhhT4c_i9sj9bt4Wag&s"
+                alt="Traveler"
                 className="w-16 h-16 rounded-full object-cover border-2 border-teal-500"
               />
               <div className="ml-4">
@@ -40,9 +40,9 @@ const TravelersJournal = () => {
 
           <div className="bg-base-100 p-8 rounded-xl shadow-md">
             <div className="flex items-center mb-6">
-              <img 
-                src="https://randomuser.me/api/portraits/men/77.jpg" 
-                alt="Traveler" 
+              <img
+                src="https://randomuser.me/api/portraits/men/77.jpg"
+                alt="Traveler"
                 className="w-16 h-16 rounded-full object-cover border-2 border-teal-500"
               />
               <div className="ml-4">
@@ -66,13 +66,24 @@ const TravelersJournal = () => {
         </div>
 
         <div className="text-center">
-          <button className="px-6 py-3 border-2 border-teal-500 text-teal-500 rounded-lg font-medium hover:bg-teal-500 hover:text-white transition flex items-center mx-auto cursor-pointer">
+          <button onClick={() => document.getElementById('my_modal_1').showModal()} className="px-6 py-3 border-2 border-teal-500 text-teal-500 rounded-lg font-medium hover:bg-teal-500 hover:text-white transition flex items-center mx-auto cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clipRule="evenodd" />
             </svg>
             Share Your Story
           </button>
         </div>
+        <dialog id="my_modal_1" className="modal">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Oops!</h3>
+            <p className="py-4">Story sharing is not supported at this time.</p>
+            <div className="modal-action">
+              <form method="dialog">
+                <button className="btn">Okey</button>
+              </form>
+            </div>
+          </div>
+        </dialog>
       </div>
     </section>
   );
