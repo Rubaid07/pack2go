@@ -1,8 +1,14 @@
+import { useEffect, useState } from 'react';
 import logo from '../assets/logo.png';
 import { motion } from 'framer-motion';
 const LogoLoading = () => {
+   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+    useEffect(() => {
+       document.querySelector('html').setAttribute('data-theme', theme);
+       localStorage.setItem('theme', theme);
+     }, [theme]);
   return (
-    <div className="fixed inset-0 bg-white dark:bg-gray-900 bg-opacity-90 flex flex-col items-center justify-center z-50">
+    <div className="fixed inset-0 bg-base-100 dark:bg-gray-900 bg-opacity-90 flex flex-col items-center justify-center z-50">
       <div className="animate-pulse mb-6">
         <img 
           src={logo} 
@@ -29,7 +35,7 @@ const LogoLoading = () => {
       <motion.p
           animate={{ opacity: [0.6, 1, 0.6] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="text-gray-600 dark:text-gray-300 mt-6 font-medium"
+          className="text-gray-400 mt-6 font-medium"
         >
           Loading your travel experience...
         </motion.p>
