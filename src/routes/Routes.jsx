@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import MainLayout from "../layouts/MainLayout";
+import Home from "../pages/home/Home";
 import AllPackages from "../pages/AllPackages";
-import Home from "../pages/Home";
 import AboutUs from "../pages/AboutUs";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
@@ -17,7 +17,6 @@ import PrivacyPolicy from "../components/PrivacyPolicy";
 import TermsAndConditions from "../components/TermsAndConditions";
 import SafetyGuidelines from "../components/SafetyGuidelines";
 import GuideBookings from "../pages/GuideBookings";
-// import GuideBookings from "../pages/GuideBookings";
 
 export const router = createBrowserRouter([
   {

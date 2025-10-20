@@ -1,4 +1,4 @@
-import { FaFacebook, FaTwitter, FaInstagram, FaTripadvisor, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaInstagram, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import logoo from "../assets/logoo.png"
 import { Link } from 'react-router';
 const Footer = () => {

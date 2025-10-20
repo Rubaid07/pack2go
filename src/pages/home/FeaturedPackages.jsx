@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
-import PackageCard from "./PackageCard";
-import Loading from "../components/Loading";
-import useAxiosSecure from "../hook/useAxiosSecure";
+import PackageCard from "../PackageCard";
+import Loading from "../../components/Loading";
+import useAxiosSecure from "../../hook/useAxiosSecure";
 
 const FeaturedPackages = () => {
   const [packages, setPackages] = useState([]);

@@ -10,6 +10,7 @@ const SignIn = () => {
     const { signIn, signInWithGoogle } = use(AuthContext)
     const [error, setError] = useState("")
     const location = useLocation()
+    
     const handleSignIn = e => {
         e.preventDefault();
         const form = e.target;

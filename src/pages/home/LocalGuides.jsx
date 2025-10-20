@@ -67,19 +67,8 @@ const LocalGuides = () => {
                 <span>{guide.location}</span>
               </div>
               <p className="text-gray-600 text mb-4">{guide.description}</p>
-              <Link to="packages" className="text-teal-500 font-medium flex items-center cursor-pointer hover:underline">
-                View Tours
-              </Link>
             </div>
           ))}
-        </div>
-
-        <div className="text-center mt-10">
-          <Link to="add-package">
-            <button className="px-6 py-3 border-2 border-teal-500 text-teal-500 rounded-lg font-medium hover:bg-teal-500 hover:text-white transition flex items-center mx-auto cursor-pointer">
-              Become a Guide
-            </button>
-          </Link>
         </div>
       </div>
     </section>
