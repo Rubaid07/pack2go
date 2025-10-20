@@ -22,7 +22,6 @@ const Booking = () => {
     const [paymentLoading, setPaymentLoading] = useState(false);
     const [seatCount, setSeatCount] = useState(1);
     
-    // ✅ Total amount calculation
     const totalAmount = pkg ? pkg.price * seatCount : 0;
     
     const axiosSecure = useAxiosSecure();
@@ -165,31 +164,31 @@ const Booking = () => {
     if (loading) return <Loading></Loading>;
 
     return (
-        <div className="min-h-screen bg-gray-50 py-8">
-            <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-                <h2 className="text-3xl font-bold text-gray-800 mb-2">Book Your Tour</h2>
-                <p className="text-gray-600 mb-6">Complete your booking for {pkg?.tour_name}</p>
+        <div className="min-h-screen py-8">
+            <div className="max-w-2xl mx-auto card-theme p-6 rounded-lg shadow-lg">
+                <h2 className="text-3xl font-bold mb-2">Book Your Tour</h2>
+                <p className="text-gray-500 mb-6">Complete your booking for {pkg?.tour_name}</p>
                 
-                <div className="bg-teal-50 border border-teal-200 rounded-lg p-4 mb-6">
-                    <h3 className="font-semibold text-teal-800 mb-2">Tour Summary</h3>
+                <div className="border border-teal-200 rounded-lg p-4 mb-6">
+                    <h3 className="font-semibold text-teal-500 mb-2">Tour Summary</h3>
                     <div className="grid grid-cols-2 gap-2 text-sm">
-                        <span className="text-gray-600">Tour:</span>
+                        <span className="text-gray-500">Tour:</span>
                         <span className="font-medium">{pkg?.tour_name}</span>
                         
-                        <span className="text-gray-600">Destination:</span>
+                        <span className="text-gray-500">Destination:</span>
                         <span className="font-medium">{pkg?.destination}</span>
                         
-                        <span className="text-gray-600">Departure:</span>
+                        <span className="text-gray-500">Departure:</span>
                         <span className="font-medium">{pkg?.departure_date}</span>
                         
-                        <span className="text-gray-600">Price per seat:</span>
+                        <span className="text-gray-500">Price per seat:</span>
                         <span className="font-medium text-teal-600">BDT {pkg?.price}</span>
 
                         {/* ✅ Seat count and total amount display */}
-                        <span className="text-gray-600">Seats:</span>
+                        <span className="text-gray-500">Seats:</span>
                         <span className="font-medium">{seatCount}</span>
                         
-                        <span className="text-gray-600 font-semibold">Total Amount:</span>
+                        <span className="text-gray-500 font-semibold">Total Amount:</span>
                         <span className="font-bold text-teal-600 text-lg">BDT {totalAmount}</span>
                     </div>
                 </div>
@@ -197,65 +196,65 @@ const Booking = () => {
                 <form onSubmit={handleBooking} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className="block text-sm font-medium text-gray-500 mb-1">
                                 Tour Package
                             </label>
                             <input 
                                 readOnly 
                                 value={pkg?.tour_name} 
-                                className="input w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" 
+                                className="input w-full focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" 
                             />
                         </div>
                         
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className="block text-sm font-medium text-gray-500 mb-1">
                                 Price per Seat
                             </label>
                             <input 
                                 readOnly 
                                 value={`BDT ${pkg?.price}`} 
-                                className="input w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent font-semibold text-teal-600" 
+                                className="input w-full focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent font-semibold text-teal-600" 
                             />
                         </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className="block text-sm font-medium text-gray-500 mb-1">
                                 Your Name
                             </label>
                             <input 
                                 readOnly 
                                 value={user?.displayName} 
-                                className="input w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" 
+                                className="input w-full focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" 
                             />
                         </div>
                         
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                            <label className="block text-sm font-medium text-gray-500 mb-1">
                                 Your Email
                             </label>
                             <input 
                                 readOnly 
                                 value={user?.email} 
-                                className="input w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" 
+                                className="input w-full focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" 
                             />
                         </div>
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-medium text-gray-500 mb-1">
                             Departure Date
                         </label>
                         <input 
                             readOnly 
                             value={pkg?.departure_date} 
-                            className="input w-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" 
+                            className="input w-full focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" 
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-medium text-gray-500 mb-1">
                             Contact Number *
                         </label>
                         <input
@@ -268,12 +267,12 @@ const Booking = () => {
                     </div>
 
                    <div>
-  <label className="block text-sm font-medium text-gray-700 mb-1">
+  <label className="block text-sm font-medium text-gray-500 mb-1">
     Number of Seats *
   </label>
 
   <div className="flex items-center gap-3">
-    {/* - Button */}
+    
     <button
       type="button"
       onClick={() => setSeatCount((prev) => Math.max(1, prev - 1))}
@@ -282,7 +281,7 @@ const Booking = () => {
       –
     </button>
 
-    {/* Seat Count Display */}
+    
     <input
       type="number"
       name="seatCount"
@@ -291,7 +290,7 @@ const Booking = () => {
       className="text-center border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
     />
 
-    {/* + Button */}
+    
     <button
       type="button"
       onClick={() => setSeatCount((prev) => Math.min(10, prev + 1))}
@@ -306,19 +305,19 @@ const Booking = () => {
   </p>
 </div>
 
-                    {/* ✅ Real-time Total Amount Display */}
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    
+                    <div className="border border-teal-200 rounded-lg p-4">
                         <div className="flex justify-between items-center">
-                            <span className="text-gray-700 font-medium">Total Amount:</span>
-                            <span className="text-2xl font-bold text-blue-600">BDT {totalAmount}</span>
+                            <span className="text-gray-500 font-medium">Total Amount:</span>
+                            <span className="text-2xl font-bold text-teal-500">BDT {totalAmount}</span>
                         </div>
-                        <p className="text-xs text-blue-600 mt-1">
+                        <p className="text-xs text-teal-600 mt-1">
                             {seatCount} seat(s) × BDT {pkg?.price} per seat
                         </p>
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-medium text-gray-500 mb-1">
                             Special Requests (Optional)
                         </label>
                         <textarea
