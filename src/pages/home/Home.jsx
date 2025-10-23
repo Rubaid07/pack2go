@@ -6,12 +6,14 @@ import SustainableTravel from './SustainableTravel';
 import SeasonalSpecials from './SeasonalSpecials';
 import TravelersJournal from './TravelersJournal';
 import Offers from './Offers';
+import SpinWheel from './SpinWheel';
 
 const Home = () => {
     return (
         <div>
              <HeroBanner></HeroBanner>
              <FeaturedPackages></FeaturedPackages>
+             <SpinWheel></SpinWheel>
              <LocalGuides></LocalGuides>
              <SustainableTravel></SustainableTravel>
              <Offers></Offers>

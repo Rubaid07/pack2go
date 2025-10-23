@@ -8,7 +8,7 @@ import useAxiosSecure from '../hook/useAxiosSecure';
 const EditPackage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [pkg, setPkg ]  = useState(null)
+  const [pkg, setPkg] = useState(null);
   const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
@@ -26,13 +26,15 @@ const EditPackage = () => {
       duration: form.duration.value,
       departure_location: form.departure_location.value,
       destination: form.destination.value,
-      price: form.price.value,
+      price: parseFloat(form.price.value),
       departure_date: form.departure_date.value,
       contact_no: form.contact_no.value,
       package_details: form.package_details.value,
-    }
+      seat_limit: parseInt(form.seat_limit.value), // ✅ শুধু seat_limit update করবে
+      // ❌ available_seats manually update করবে না
+    };
 
-    axiosSecure.put(`${import.meta.env.VITE_API_URL}/packages/${id}`, updatePkg)
+    axiosSecure.put(`/packages/${id}`, updatePkg)
       .then(res => {
         if (res.data.modifiedCount > 0) {
           Swal.fire({
@@ -61,6 +63,9 @@ const EditPackage = () => {
   };
 
   if (!pkg) return <Loading></Loading>;
+
+  const today = new Date();
+  const formatedToday = today.toISOString().split('T')[0];
 
   return (
     <div className="max-w-4xl mx-auto p-6 my-10 shadow-xl rounded-xl transition-all duration-300">
@@ -121,7 +126,6 @@ const EditPackage = () => {
               type="text"
               name="destination"
               defaultValue={pkg.destination}
-              
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
               required 
             />
@@ -133,7 +137,8 @@ const EditPackage = () => {
               type="number"
               name="price"
               defaultValue={pkg.price}
-              
+              min="1"
+              step="0.01"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
               required 
             />
@@ -145,7 +150,7 @@ const EditPackage = () => {
               type="date"
               name="departure_date"
               defaultValue={pkg.departure_date}
-              
+              min={formatedToday}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
               required 
             />
@@ -157,11 +162,52 @@ const EditPackage = () => {
               type="text"
               name="contact_no"
               defaultValue={pkg.contact_no}
-              
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
               required 
             />
           </div>
+
+            <div>
+            <label className="block text-sm font-medium text-gray-500 mb-1">
+              Total Seat Limit *
+            </label>
+            <input 
+              type="number"
+              name="seat_limit"
+              defaultValue={pkg.seat_limit || 20}
+              min="1"
+              max="100"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+              required 
+            />
+            <p className="text-xs text-gray-500 mt-1">Maximum number of seats available</p>
+          </div>
+   
+        </div>
+
+        <div className="border border-blue-200 rounded-lg p-4">
+          <h3 className="font-semibold text-blue-500 mb-2">Current Seat Status</h3>
+          <div className="grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <span className="text-gray-500">Total Bookings:</span>
+              <span className="font-medium ml-2">{pkg.bookingCount || 0}</span>
+            </div>
+            <div>
+              <span className="text-gray-500">Available Seats:</span>
+              <span className={`font-medium ml-2 ${
+                pkg.available_seats === 0 
+                  ? 'text-red-600' 
+                  : pkg.available_seats < 5 
+                    ? 'text-orange-600' 
+                    : 'text-green-600'
+              }`}>
+                {pkg.available_seats || pkg.seat_limit || 20} seats
+              </span>
+            </div>
+          </div>
+          <p className="text-xs text-gray-500 mt-2">
+            Available seats automatically update when bookings are made
+          </p>
         </div>
 
         <div>
@@ -170,7 +216,6 @@ const EditPackage = () => {
             name="package_details"
             rows="4"
             defaultValue={pkg.package_details}
-            
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
             required
           ></textarea>

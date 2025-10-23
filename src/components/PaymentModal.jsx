@@ -109,11 +109,30 @@ const PaymentModal = ({
     setErrorMessage(event.error?.message || '');
   };
 
-  if (!isOpen) return null;
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+    if (!isOpen) return null;
+
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg max-w-md w-full">
+    <div 
+      className="fixed inset-0 bg-transparent backdrop-blur-xs bg-opacity-60 flex items-center justify-center z-50 p-4"
+      onClick={handleOverlayClick}
+    >
+      <div className="bg-white rounded-lg max-w-md w-full shadow-2xl">
         <div className="bg-teal-600 text-white p-4 rounded-t-lg">
           <div className="flex justify-between items-center">
             <h3 className="text-xl font-bold">Complete Payment</h3>
@@ -124,11 +143,6 @@ const PaymentModal = ({
         </div>
 
         <div className="p-6">
-          <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded">
-            <p className="text-blue-800 text-sm">
-              <strong>Test:</strong> যদি card fields না দেখায়, Stripe key check করো
-            </p>
-          </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Card Number */}
@@ -180,14 +194,6 @@ const PaymentModal = ({
             </button>
           </form>
 
-          {/* Test Card Info */}
-          <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded">
-            <h4 className="font-semibold text-yellow-800 mb-2">Test Card:</h4>
-            <div className="text-sm text-yellow-700">
-              <p>4242 4242 4242 4242</p>
-              <p>12/34 • 123</p>
-            </div>
-          </div>
         </div>
       </div>
     </div>

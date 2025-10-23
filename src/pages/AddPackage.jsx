@@ -6,7 +6,7 @@ import useAxiosSecure from '../hook/useAxiosSecure';
 
 const AddPackage = () => {
   const { user } = use(AuthContext);
-  const navigate= useNavigate()
+  const navigate = useNavigate()
   const axiosSecure = useAxiosSecure()
 
   const handleAddPackage = (e) => {
@@ -14,16 +14,19 @@ const AddPackage = () => {
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
+    
     const newPackage = {
       ...data,
       guide_name: user.displayName,
       guide_email: user.email,
       guide_photo: user.photoURL,
       bookingCount: 0,
+      seat_limit: parseInt(data.seat_limit),
+      available_seats: parseInt(data.seat_limit), 
       created_at: new Date()
     };
 
-    axiosSecure.post(`${import.meta.env.VITE_API_URL}/packages`, newPackage)
+    axiosSecure.post('/packages', newPackage)
       .then(res => {
         if (res.data.insertedId) {
           Swal.fire({
@@ -50,8 +53,10 @@ const AddPackage = () => {
         });
       });
   };
+
   const today = new Date();
   const formatedToday = today.toISOString().split('T')[0];
+
   return (
     <div className="max-w-4xl mx-auto p-6 my-10 shadow-xl rounded-xl transition-all duration-300">
       <div className="text-center mb-12">
@@ -67,7 +72,7 @@ const AddPackage = () => {
               type="text" 
               name="tour_name" 
               placeholder="Tour Name" 
-              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
               required 
             />
           </div>
@@ -78,7 +83,7 @@ const AddPackage = () => {
               type="text" 
               name="image" 
               placeholder="https://example.com/image.jpg" 
-              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
               required 
             />
           </div>
@@ -89,7 +94,7 @@ const AddPackage = () => {
               type="text" 
               name="duration" 
               placeholder="Travel Duration" 
-              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
               required 
             />
           </div>
@@ -100,7 +105,7 @@ const AddPackage = () => {
               type="text" 
               name="departure_location" 
               placeholder="Departure Location" 
-              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
               required 
             />
           </div>
@@ -111,7 +116,7 @@ const AddPackage = () => {
               type="text" 
               name="destination" 
               placeholder="Destination" 
-              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
               required 
             />
           </div>
@@ -122,7 +127,7 @@ const AddPackage = () => {
               type="number" 
               name="price" 
               placeholder="Price (BDT)" 
-              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
               required 
             />
           </div>
@@ -132,7 +137,7 @@ const AddPackage = () => {
             <input 
               type="date" 
               name="departure_date" 
-              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
               min={formatedToday}
               required 
             />
@@ -144,9 +149,26 @@ const AddPackage = () => {
               type="number" 
               name="contact_no" 
               placeholder="+8801XXXXXXXXX" 
-              className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
               required 
             />
+          </div>
+
+           <div>
+            <label className="block text-sm font-medium text-gray-500 mb-1">
+              Total Seat Limit *
+            </label>
+            <input 
+              type="number" 
+              name="seat_limit" 
+              placeholder="Total number of seats"
+              min="1"
+              max="100"
+              defaultValue="20"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
+              required 
+            />
+            <p className="text-xs text-gray-500 mt-1">Maximum number of seats available for this tour</p>
           </div>
         </div>
 
@@ -156,7 +178,7 @@ const AddPackage = () => {
             name="package_details" 
             rows="4" 
             placeholder="Describe the package details including itinerary, inclusions, exclusions, etc." 
-            className="w-full px-4 py-3 border border-gray-300  rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
             required
           ></textarea>
         </div>
@@ -164,7 +186,7 @@ const AddPackage = () => {
         <div className="pt-4">
           <button 
             type="submit" 
-            className="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-300 cursor-pointer "
+            className="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-300 cursor-pointer"
           >
             Add Package
           </button>

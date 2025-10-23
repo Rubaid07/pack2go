@@ -2,12 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { formatDistanceToNow } from "date-fns";
 import { AuthContext } from "../provider/AuthProvider";
-import { FiMail, FiPhone } from "react-icons/fi";
-import { TbCoinTaka } from "react-icons/tb";
+import { FiMail, FiPhone, FiClock, FiUsers, FiMapPin, FiCalendar, FiDollarSign } from "react-icons/fi";
 import { GoArrowRight } from "react-icons/go";
 import { FaAngleLeft } from "react-icons/fa6";
-import { CiCalendarDate, CiLocationOn } from "react-icons/ci";
-import { IoMdTime } from "react-icons/io";
 import Loading from "../components/Loading";
 
 const PackageDetails = () => {
@@ -34,150 +31,281 @@ const PackageDetails = () => {
 
   if (!pakg) {
     return (
-      <div className="max-w-5xl mx-auto px-4 py-20 text-center">
-        <h2 className="text-2xl font-bold text-red-500 mb-4">Package not found</h2>
-        <button
-          onClick={() => navigate(-1)}
-          className="btn bg-teal-600 hover:bg-teal-700 text-white"
-        >
-          Go Back
-        </button>
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-red-500 mb-4">Package not found</h2>
+          <button
+            onClick={() => navigate(-1)}
+            className="btn bg-teal-600 hover:bg-teal-700 text-white"
+          >
+            Go Back
+          </button>
+        </div>
       </div>
     );
   }
-  const isExpired = new Date(pakg.departure_date) < new Date()
-  return (
-    <div className="max-w-5xl mx-auto px-4 py-8">
-      <button
-        onClick={() => navigate(-1)}
-        className="flex items-center text-teal-600 hover:text-teal-800 mb-6 transition-colors cursor-pointer"
-      >
-        <FaAngleLeft className="mr-2" /> Back to Packages
-      </button>
+  
+  const isExpired = new Date(pakg.departure_date) < new Date();
+  const availableSeats = pakg.available_seats || pakg.seat_limit || 20;
+  const totalSeats = pakg.seat_limit || 20;
+  const isFullyBooked = availableSeats <= 0;
+  const bookedSeats = totalSeats - availableSeats;
 
-      <div className="bg-base-200 card-theme rounded-xl shadow-lg overflow-hidden">
-        <div className="relative h-80 md:h-96">
-          <img
-            src={pakg.image}
-            alt={pakg.tour_name}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
-            <div>
-              <h1 className="text-3xl md:text-4xl font-bold text-white">{pakg.tour_name}</h1>
-              <p className="text-gray-200 mt-1">
-                Posted {formatDistanceToNow(new Date(pakg.created_at), { addSuffix: true })}
-              </p>
+  // Calculate discount if any
+  const hasDiscount = pakg.discount_price && pakg.discount_price < pakg.price;
+  const discountPercentage = hasDiscount 
+    ? Math.round(((pakg.price - pakg.discount_price) / pakg.price) * 100)
+    : 0;
+
+  return (
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-6xl mx-auto px-4">
+        {/* Back Button */}
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center text-teal-600 hover:text-teal-800 mb-6 transition-colors cursor-pointer font-medium"
+        >
+          <FaAngleLeft className="mr-2" /> Back to Packages
+        </button>
+
+        {/* Main Card */}
+        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+          {/* Hero Image Section */}
+          <div className="relative h-80 md:h-96">
+            <img
+              src={pakg.image}
+              alt={pakg.tour_name}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6 md:p-8">
+              <div className="text-white">
+                <h1 className="text-3xl md:text-4xl font-bold mb-2">{pakg.tour_name}</h1>
+                <div className="flex items-center flex-wrap gap-4 text-sm md:text-base">
+                  <span className="flex items-center">
+                    <FiMapPin className="mr-1" />
+                    {pakg.departure_location} to {pakg.destination}
+                  </span>
+                  <span className="flex items-center">
+                    <FiCalendar className="mr-1" />
+                    {pakg.departure_date}
+                  </span>
+                  {isExpired && (
+                    <span className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                      Expired
+                    </span>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="p-6 md:p-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Tour Details</h3>
-
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <CiLocationOn size={20} className="text-teal-500 mt-1 mr-3" />
-                  <div>
-                    <p className="font-medium">Route</p>
-                    <p className="text-gray-500 flex gap-3 items-center">
-                      {pakg.departure_location} <GoArrowRight /> {pakg.destination}
+          {/* Content Section */}
+          <div className="p-6 md:p-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Left Column - Tour Details */}
+              <div className="lg:col-span-2">
+                {/* Quick Stats */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                  <div className="bg-blue-50 rounded-lg p-4 text-center">
+                    <FiUsers className="text-blue-600 text-xl mx-auto mb-2" />
+                    <p className="text-sm text-gray-600">Available Seats</p>
+                    <p className={`text-lg font-bold ${
+                      availableSeats === 0 ? 'text-red-600' : 
+                      availableSeats < 5 ? 'text-orange-600' : 'text-green-600'
+                    }`}>
+                      {availableSeats}
                     </p>
                   </div>
-                </div>
-
-                <div className="flex items-start">
-                  <IoMdTime size={20} className="text-teal-500 mt-1 mr-3" />
-                  <div>
-                    <p className="font-medium">Duration</p>
-                    <p className="text-gray-500">{pakg.duration}</p>
+                  <div className="bg-green-50 rounded-lg p-4 text-center">
+                    <FiUsers className="text-green-600 text-xl mx-auto mb-2" />
+                    <p className="text-sm text-gray-600">Total Seats</p>
+                    <p className="text-lg font-bold text-gray-800">{totalSeats}</p>
+                  </div>
+                  <div className="bg-purple-50 rounded-lg p-4 text-center">
+                    <FiUsers className="text-purple-600 text-xl mx-auto mb-2" />
+                    <p className="text-sm text-gray-600">Booked</p>
+                    <p className="text-lg font-bold text-gray-800">{bookedSeats}</p>
+                  </div>
+                  <div className="bg-orange-50 rounded-lg p-4 text-center">
+                    <FiDollarSign className="text-orange-600 text-xl mx-auto mb-2" />
+                    <p className="text-sm text-gray-600">Price</p>
+                    <p className="text-lg font-bold text-gray-800">BDT {pakg.price}</p>
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <CiCalendarDate size={20} className="text-teal-500 mt-1 mr-3" />
+                {/* Tour Information */}
+                <div className="space-y-6">
                   <div>
-                    <p className="font-medium">Departure Date</p>
-                    <div className="flex gap-3">
-                      <p className="text-gray-500">{pakg.departure_date}</p>
-                      {isExpired && (
-                        <span className="text-xs bg-red-100 text-red-500 px-2 py-1 rounded-full font-semibold">
-                          Expired
-                        </span>
-                      )}
+                    <h3 className="text-2xl font-bold text-gray-800 mb-4">Tour Overview</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="flex items-center p-3 bg-gray-50 rounded-lg">
+                        <FiMapPin className="text-teal-600 mr-3 text-xl" />
+                        <div>
+                          <p className="font-medium text-gray-700">Route</p>
+                          <p className="text-gray-600 flex items-center">
+                            {pakg.departure_location} <GoArrowRight className="mx-2" /> {pakg.destination}
+                          </p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center p-3 bg-gray-50 rounded-lg">
+                        <FiClock className="text-teal-600 mr-3 text-xl" />
+                        <div>
+                          <p className="font-medium text-gray-700">Duration</p>
+                          <p className="text-gray-600">{pakg.duration}</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center p-3 bg-gray-50 rounded-lg">
+                        <FiCalendar className="text-teal-600 mr-3 text-xl" />
+                        <div>
+                          <p className="font-medium text-gray-700">Departure Date</p>
+                          <p className="text-gray-600">{pakg.departure_date}</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center p-3 bg-gray-50 rounded-lg">
+                        <FiDollarSign className="text-teal-600 mr-3 text-xl" />
+                        <div>
+                          <p className="font-medium text-gray-700">Price per person</p>
+                          <p className="text-gray-600 font-semibold">BDT {pakg.price}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Package Details */}
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-4">Package Details</h3>
+                    <div className="bg-gray-50 rounded-lg p-6">
+                      <div className="text-gray-700 whitespace-pre-line leading-relaxed">
+                        {pakg.package_details}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column - Guide Info & Booking */}
+              <div className="space-y-6">
+                {/* Guide Information */}
+                <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                  <h3 className="text-xl font-bold text-gray-800 mb-4">Guide Information</h3>
+                  <div className="flex items-center mb-4">
+                    <img
+                      src={pakg.guide_photo}
+                      alt={pakg.guide_name}
+                      className="w-16 h-16 rounded-full object-cover border-4 border-teal-500"
+                    />
+                    <div className="ml-4">
+                      <p className="font-bold text-gray-800 text-lg">{pakg.guide_name}</p>
+                      <p className="text-sm text-gray-600">Tour Guide</p>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-center">
+                      <FiMail className="text-gray-400 mr-3" />
+                      <span className="text-gray-700">{pakg.guide_email}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <FiPhone className="text-gray-400 mr-3" />
+                      <span className="text-gray-700">{pakg.contact_no}</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <TbCoinTaka size={20} className="text-teal-500 mt-1 mr-3" />
-                  <div>
-                    <p className="font-medium">Price</p>
-                    <p className="text-gray-500">BDT {pakg.price}</p>
-                  </div>
-                </div>
+                {/* Booking Section */}
+                {user?.email !== pakg.guide_email && (
+                  <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                    <h3 className="text-xl font-bold text-gray-800 mb-4">Book This Tour</h3>
+                    
+                    {/* Availability Status */}
+                    <div className={`p-4 rounded-lg mb-4 ${
+                      isFullyBooked ? 'bg-red-50 border border-red-200' :
+                      availableSeats < 5 ? 'bg-orange-50 border border-orange-200' :
+                      'bg-green-50 border border-green-200'
+                    }`}>
+                      <div className="flex items-center justify-between">
+                        <span className={`font-semibold ${
+                          isFullyBooked ? 'text-red-800' :
+                          availableSeats < 5 ? 'text-orange-800' :
+                          'text-green-800'
+                        }`}>
+                          {isFullyBooked ? '❌ Fully Booked' :
+                           availableSeats < 5 ? `⚠️ Only ${availableSeats} seats left!` :
+                           `✅ ${availableSeats} seats available`}
+                        </span>
+                        <span className="text-sm text-gray-600">
+                          {bookedSeats}/{totalSeats} booked
+                        </span>
+                      </div>
+                    </div>
 
-                <div className="pt-4">
-                  <p className="font-medium mb-2">Total Booking: {pakg.bookingCount}</p>
+                    {/* Price */}
+                    <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                      <div className="flex justify-between items-center">
+                        <span className="text-gray-700">Price per seat:</span>
+                        <span className="text-2xl font-bold text-teal-600">BDT {pakg.price}</span>
+                      </div>
+                    </div>
+
+                    {/* Book Button */}
+                    <button
+                      onClick={() => navigate(`/booking/${pakg._id}`)}
+                      disabled={isExpired || isFullyBooked}
+                      className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition-all duration-300 ${
+                        isExpired || isFullyBooked
+                          ? "bg-gray-400 cursor-not-allowed text-white"
+                          : "bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-700 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transform hover:scale-105"
+                      }`}
+                    >
+                      {isExpired 
+                        ? "Booking Closed" 
+                        : isFullyBooked
+                          ? "Fully Booked"
+                          : "Book Now"
+                      }
+                    </button>
+
+                    {/* Additional Info */}
+                    <div className="mt-4 text-center">
+                      <p className="text-sm text-gray-600">
+                        Posted {formatDistanceToNow(new Date(pakg.created_at), { addSuffix: true })}
+                      </p>
+                      {pakg.bookingCount > 0 && (
+                        <p className="text-sm text-teal-600 mt-1">
+                          🎉 {pakg.bookingCount} successful booking(s)
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {/* Quick Facts */}
+                <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                  <h4 className="font-bold text-blue-800 mb-3">Quick Facts</h4>
+                  <ul className="space-y-2 text-sm text-blue-700">
+                    <li className="flex items-center">
+                      <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                      Instant confirmation
+                    </li>
+                    <li className="flex items-center">
+                      <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                      Free cancellation
+                    </li>
+                    <li className="flex items-center">
+                      <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                      Best price guarantee
+                    </li>
+                    <li className="flex items-center">
+                      <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                      24/7 customer support
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
-
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Guide Information</h3>
-
-              <div className="flex items-center mb-4">
-                <img
-                  src={pakg.guide_photo}
-                  alt={pakg.guide_name}
-                  className="w-12 h-12 rounded-full object-cover border-2 border-teal-500"
-                />
-                <div className="ml-4">
-                  <p className="font-medium">{pakg.guide_name}</p>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <FiMail size={20} className="text-teal-500 mt-1 mr-3" />
-                  <div>
-                    <p className="font-medium">Email</p>
-                    <p className="text-gray-500">{pakg.guide_email}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <FiPhone size={20} className="text-teal-500 mt-1 mr-3" />
-                  <div>
-                    <p className="font-medium">Contact</p>
-                    <p className="text-gray-500">{pakg.contact_no}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mt-8">
-
-            <h3 className="text-xl font-semibold mb-4">Package Details</h3>
-            <div className="text text-gray-500 whitespace-pre-line">
-              {pakg.package_details}
-            </div>
-            {user?.email !== pakg.guide_email && (
-              <div className="mt-10">
-                <button
-                  onClick={() => navigate(`/booking/${pakg._id}`)}
-                  className={`font-medium py-3 px-8 rounded-lg shadow-md transition-all duration-300 ${isExpired
-                      ? "bg-gray-400 cursor-not-allowed text-white"
-                      : "bg-teal-600 hover:bg-teal-700 text-white hover:shadow-lg cursor-pointer"
-                    }`}
-                  disabled={isExpired}
-                >
-                  {isExpired ? "Booking Closed" : "Book Now"}
-                </button>
-              </div>
-            )}
           </div>
         </div>
       </div>
