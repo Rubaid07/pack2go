@@ -22,3 +22,67 @@
 [data-theme="dark"] .text {
   @apply text-gray-400;
 }
+/* Dark Mode Styles for PackageDetails */
+[data-theme="dark"] .dark-mode {
+  @apply bg-gray-900;
+}
+
+[data-theme="dark"] .dark-text {
+  @apply text-gray-400;
+}
+
+[data-theme="dark"] .dark-text-bold {
+  @apply text-gray-200;
+}
+
+[data-theme="dark"] .dark-card {
+  @apply bg-gray-800;
+}
+
+[data-theme="dark"] .dark-border {
+  @apply border-gray-700;
+}
+
+[data-theme="dark"] .dark-icon {
+  @apply text-teal-400;
+}
+
+[data-theme="dark"] .dark-price {
+  @apply text-teal-400;
+}
+
+[data-theme="dark"] .dark-seat-text {
+  @apply text-red-400;
+}
+
+[data-theme="dark"] .dark-availability-red {
+  @apply bg-red-900/30 border-red-800;
+}
+
+[data-theme="dark"] .dark-availability-orange {
+  @apply bg-orange-900/30 border-orange-800;
+}
+
+[data-theme="dark"] .dark-availability-green {
+  @apply bg-green-900/30 border-green-800;
+}
+
+[data-theme="dark"] .dark-availability-text {
+  @apply text-red-300;
+}
+
+[data-theme="dark"] .dark-facts-title {
+  @apply text-blue-400;
+}
+
+[data-theme="dark"] .dark-facts-text {
+  @apply text-blue-300;
+}
+
+[data-theme="dark"] .dark-facts-dot {
+  @apply bg-blue-400;
+}
+[data-theme="light"] .subscribe {
+  @apply bg-gradient-to-br from-teal-500 to-emerald-600;
+}
+

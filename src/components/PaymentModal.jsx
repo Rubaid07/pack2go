@@ -51,7 +51,7 @@ const PaymentModal = ({
       console.log('=== PAYMENT MODAL DEBUG ===');
       console.log('Stripe loaded:', !!stripe);
       console.log('Elements loaded:', !!elements);
-      console.log('Client Secret:', clientSecret ? '✅ Available' : '❌ Missing');
+      console.log('Client Secret:', clientSecret ? ' Available' : ' Missing');
       
       if (elements) {
         console.log('Elements instance:', elements);
@@ -129,10 +129,10 @@ const PaymentModal = ({
 
   return (
     <div 
-      className="fixed inset-0 bg-transparent backdrop-blur-xs bg-opacity-60 flex items-center justify-center z-50 p-4"
+      className="fixed inset-0 backdrop-blur-xs bg-opacity-60 flex items-center justify-center z-50 p-4"
       onClick={handleOverlayClick}
     >
-      <div className="bg-white rounded-lg max-w-md w-full shadow-2xl">
+      <div className="bg-white dark-card rounded-lg max-w-md w-full shadow-2xl">
         <div className="bg-teal-600 text-white p-4 rounded-t-lg">
           <div className="flex justify-between items-center">
             <h3 className="text-xl font-bold">Complete Payment</h3>

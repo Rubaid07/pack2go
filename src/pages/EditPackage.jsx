@@ -30,8 +30,8 @@ const EditPackage = () => {
       departure_date: form.departure_date.value,
       contact_no: form.contact_no.value,
       package_details: form.package_details.value,
-      seat_limit: parseInt(form.seat_limit.value), // ✅ শুধু seat_limit update করবে
-      // ❌ available_seats manually update করবে না
+      seat_limit: parseInt(form.seat_limit.value),
+      isSeasonal: form.isSeasonal.checked
     };
 
     axiosSecure.put(`/packages/${id}`, updatePkg)
@@ -180,8 +180,20 @@ const EditPackage = () => {
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
               required 
             />
-            <p className="text-xs text-gray-500 mt-1">Maximum number of seats available</p>
           </div>
+          {/* Seasonal Package Checkbox */}
+<div className="flex items-center space-x-2 mt-2">
+  <input
+    type="checkbox"
+    name="isSeasonal"
+    defaultChecked={pkg.isSeasonal}
+    className="w-5 h-5 text-teal-600 focus:ring-teal-500 border-gray-300 rounded"
+  />
+  <label htmlFor="isSeasonal" className="text-gray-600 font-medium">
+    Seasonal Package
+  </label>
+</div>
+
    
         </div>
 

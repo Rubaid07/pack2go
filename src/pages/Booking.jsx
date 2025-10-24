@@ -22,13 +22,11 @@ const Booking = () => {
     const [paymentLoading, setPaymentLoading] = useState(false);
     const [seatCount, setSeatCount] = useState(1);
 
-    // Discount related states
     const [discountCode, setDiscountCode] = useState('');
     const [appliedDiscount, setAppliedDiscount] = useState(null);
     const [availableDiscounts, setAvailableDiscounts] = useState([]);
     const [discountLoading, setDiscountLoading] = useState(false);
 
-    // Form states
     const [contact, setContact] = useState('');
     const [note, setNote] = useState('');
 
@@ -47,7 +45,6 @@ const Booking = () => {
             });
     }, [id]);
 
-    // Load user's available discounts
     useEffect(() => {
         if (user) {
             loadAvailableDiscounts();
@@ -66,7 +63,6 @@ const Booking = () => {
         }
     };
 
-    // ✅ Seat count control functions
     const increaseSeats = () => {
         if (pkg && seatCount < pkg.available_seats) {
             setSeatCount(prev => prev + 1);
@@ -214,7 +210,6 @@ const Booking = () => {
             return;
         }
 
-        // ✅ Seat availability check
         if (seatCount > pkg.available_seats) {
             Swal.fire({
                 icon: 'error',
@@ -226,7 +221,6 @@ const Booking = () => {
             return;
         }
 
-        // ✅ Contact number validation
         if (!contact.trim()) {
             Swal.fire({
                 icon: 'warning',
@@ -257,7 +251,6 @@ const Booking = () => {
             status: "pending",
             payment_status: "unpaid",
             notes: note,
-            // Discount information
             applied_discount: appliedDiscount ? {
                 discount_code: appliedDiscount.discount_code,
                 discount_percentage: appliedDiscount.discount,
@@ -267,7 +260,6 @@ const Booking = () => {
 
         setBookingFormData(bookingData);
 
-        // Payment intent তৈরি করো TOTAL amount দিয়ে
         const success = await createPaymentIntent(totalAmount);
         if (success) {
             setShowPayment(true);
@@ -282,7 +274,6 @@ const Booking = () => {
             });
 
             if (response.data.success) {
-                // Mark discount as used if applied
                 if (appliedDiscount) {
                     await axiosSecure.patch(`/discounts/use/${appliedDiscount.discount_code}`);
                 }
@@ -441,7 +432,7 @@ const Booking = () => {
                         />
                     </div>
 
-                    {/* ✅ UPDATED: Number of Seats with + - controls */}
+                   
                     <div>
                         <label className="block text-sm font-medium text-gray-500 mb-3">
                             Number of Seats *
@@ -543,7 +534,7 @@ const Booking = () => {
                                         <p className="text-sm text-gray-400 mb-2">Your available discount codes:</p>
                                         <div className="space-y-2">
                                             {availableDiscounts.map(discount => (
-                                                <div key={discount._id} className="flex items-center justify-between p-2 bg-blue-50 rounded">
+                                                <div key={discount._id} className="flex items-center justify-between p-2 rounded">
                                                     <div>
                                                         <span className="font-mono font-bold">{discount.discount_code}</span>
                                                         <span className="text-sm text-gray-400 ml-2">

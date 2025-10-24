@@ -17,6 +17,7 @@ const AddPackage = () => {
     
     const newPackage = {
       ...data,
+       isSeasonal: form.isSeasonal.checked,
       guide_name: user.displayName,
       guide_email: user.email,
       guide_photo: user.photoURL,
@@ -142,6 +143,7 @@ const AddPackage = () => {
               required 
             />
           </div>
+          
 
           <div>
             <label className="block text-sm font-medium text-gray-500 mb-1">Contact Number</label>
@@ -153,6 +155,7 @@ const AddPackage = () => {
               required 
             />
           </div>
+          
 
            <div>
             <label className="block text-sm font-medium text-gray-500 mb-1">
@@ -168,8 +171,20 @@ const AddPackage = () => {
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-300" 
               required 
             />
-            <p className="text-xs text-gray-500 mt-1">Maximum number of seats available for this tour</p>
           </div>
+          {/* Seasonal Package Checkbox */}
+<div className="flex items-center space-x-2 mt-2">
+  <input
+    type="checkbox"
+    name="isSeasonal"
+    id="isSeasonal"
+    className="w-5 h-5 text-teal-600 focus:ring-teal-500 border-gray-300 rounded"
+  />
+  <label htmlFor="isSeasonal" className="text-gray-600 font-medium">
+    Mark this as a Seasonal Package
+  </label>
+</div>
+
         </div>
 
         <div>

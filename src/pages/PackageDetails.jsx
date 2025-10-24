@@ -51,25 +51,19 @@ const PackageDetails = () => {
   const isFullyBooked = availableSeats <= 0;
   const bookedSeats = totalSeats - availableSeats;
 
-  // Calculate discount if any
-  const hasDiscount = pakg.discount_price && pakg.discount_price < pakg.price;
-  const discountPercentage = hasDiscount 
-    ? Math.round(((pakg.price - pakg.discount_price) / pakg.price) * 100)
-    : 0;
-
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen py-8 bg-gray-50 dark-mode">
       <div className="max-w-6xl mx-auto px-4">
         {/* Back Button */}
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center text-teal-600 hover:text-teal-800 mb-6 transition-colors cursor-pointer font-medium"
+          className="flex items-center text-teal-600 hover:text-teal-800 dark-text mb-6 transition-colors cursor-pointer font-medium"
         >
           <FaAngleLeft className="mr-2" /> Back to Packages
         </button>
 
         {/* Main Card */}
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div className="card-theme rounded-2xl shadow-xl overflow-hidden">
           {/* Hero Image Section */}
           <div className="relative h-80 md:h-96">
             <img
@@ -106,69 +100,69 @@ const PackageDetails = () => {
               <div className="lg:col-span-2">
                 {/* Quick Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                  <div className="bg-blue-50 rounded-lg p-4 text-center">
-                    <FiUsers className="text-blue-600 text-xl mx-auto mb-2" />
-                    <p className="text-sm text-gray-600">Available Seats</p>
+                  <div className="bg-blue-50 dark-card rounded-lg p-4 text-center">
+                    <FiUsers className="text-blue-600 dark-icon text-xl mx-auto mb-2" />
+                    <p className="text-sm text-gray-600 dark-text">Available Seats</p>
                     <p className={`text-lg font-bold ${
                       availableSeats === 0 ? 'text-red-600' : 
                       availableSeats < 5 ? 'text-orange-600' : 'text-green-600'
-                    }`}>
+                    } dark-seat-text`}>
                       {availableSeats}
                     </p>
                   </div>
-                  <div className="bg-green-50 rounded-lg p-4 text-center">
-                    <FiUsers className="text-green-600 text-xl mx-auto mb-2" />
-                    <p className="text-sm text-gray-600">Total Seats</p>
-                    <p className="text-lg font-bold text-gray-800">{totalSeats}</p>
+                  <div className="bg-green-50 dark-card rounded-lg p-4 text-center">
+                    <FiUsers className="text-green-600 dark-icon text-xl mx-auto mb-2" />
+                    <p className="text-sm text-gray-600 dark-text">Total Seats</p>
+                    <p className="text-lg font-bold text-gray-800 dark-text-bold">{totalSeats}</p>
                   </div>
-                  <div className="bg-purple-50 rounded-lg p-4 text-center">
-                    <FiUsers className="text-purple-600 text-xl mx-auto mb-2" />
-                    <p className="text-sm text-gray-600">Booked</p>
-                    <p className="text-lg font-bold text-gray-800">{bookedSeats}</p>
+                  <div className="bg-purple-50 dark-card rounded-lg p-4 text-center">
+                    <FiUsers className="text-purple-600 dark-icon text-xl mx-auto mb-2" />
+                    <p className="text-sm text-gray-600 dark-text">Booked</p>
+                    <p className="text-lg font-bold text-gray-800 dark-text-bold">{bookedSeats}</p>
                   </div>
-                  <div className="bg-orange-50 rounded-lg p-4 text-center">
-                    <FiDollarSign className="text-orange-600 text-xl mx-auto mb-2" />
-                    <p className="text-sm text-gray-600">Price</p>
-                    <p className="text-lg font-bold text-gray-800">BDT {pakg.price}</p>
+                  <div className="bg-orange-50 dark-card rounded-lg p-4 text-center">
+                    <FiDollarSign className="text-orange-600 dark-icon text-xl mx-auto mb-2" />
+                    <p className="text-sm text-gray-600 dark-text">Price</p>
+                    <p className="text-lg font-bold text-gray-800 dark-text-bold">BDT {pakg.price}</p>
                   </div>
                 </div>
 
                 {/* Tour Information */}
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-800 mb-4">Tour Overview</h3>
+                    <h3 className="text-2xl font-bold text-gray-800 dark-text-bold mb-4">Tour Overview</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="flex items-center p-3 bg-gray-50 rounded-lg">
-                        <FiMapPin className="text-teal-600 mr-3 text-xl" />
+                      <div className="flex items-center p-3 bg-gray-50 dark-card rounded-lg">
+                        <FiMapPin className="text-teal-600 dark-icon mr-3 text-xl" />
                         <div>
-                          <p className="font-medium text-gray-700">Route</p>
-                          <p className="text-gray-600 flex items-center">
+                          <p className="font-medium text-gray-700 dark-text-bold">Route</p>
+                          <p className="text-gray-600 dark-text flex items-center">
                             {pakg.departure_location} <GoArrowRight className="mx-2" /> {pakg.destination}
                           </p>
                         </div>
                       </div>
                       
-                      <div className="flex items-center p-3 bg-gray-50 rounded-lg">
-                        <FiClock className="text-teal-600 mr-3 text-xl" />
+                      <div className="flex items-center p-3 bg-gray-50 dark-card rounded-lg">
+                        <FiClock className="text-teal-600 dark-icon mr-3 text-xl" />
                         <div>
-                          <p className="font-medium text-gray-700">Duration</p>
-                          <p className="text-gray-600">{pakg.duration}</p>
+                          <p className="font-medium text-gray-700 dark-text-bold">Duration</p>
+                          <p className="text-gray-600 dark-text">{pakg.duration}</p>
                         </div>
                       </div>
                       
-                      <div className="flex items-center p-3 bg-gray-50 rounded-lg">
-                        <FiCalendar className="text-teal-600 mr-3 text-xl" />
+                      <div className="flex items-center p-3 bg-gray-50 dark-card rounded-lg">
+                        <FiCalendar className="text-teal-600 dark-icon mr-3 text-xl" />
                         <div>
-                          <p className="font-medium text-gray-700">Departure Date</p>
-                          <p className="text-gray-600">{pakg.departure_date}</p>
+                          <p className="font-medium text-gray-700 dark-text-bold">Departure Date</p>
+                          <p className="text-gray-600 dark-text">{pakg.departure_date}</p>
                         </div>
                       </div>
                       
-                      <div className="flex items-center p-3 bg-gray-50 rounded-lg">
-                        <FiDollarSign className="text-teal-600 mr-3 text-xl" />
+                      <div className="flex items-center p-3 bg-gray-50 dark-card rounded-lg">
+                        <FiDollarSign className="text-teal-600 dark-icon mr-3 text-xl" />
                         <div>
-                          <p className="font-medium text-gray-700">Price per person</p>
-                          <p className="text-gray-600 font-semibold">BDT {pakg.price}</p>
+                          <p className="font-medium text-gray-700 dark-text-bold">Price per person</p>
+                          <p className="text-gray-600 dark-text font-semibold">BDT {pakg.price}</p>
                         </div>
                       </div>
                     </div>
@@ -176,9 +170,9 @@ const PackageDetails = () => {
 
                   {/* Package Details */}
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-800 mb-4">Package Details</h3>
-                    <div className="bg-gray-50 rounded-lg p-6">
-                      <div className="text-gray-700 whitespace-pre-line leading-relaxed">
+                    <h3 className="text-2xl font-bold text-gray-800 dark-text-bold mb-4">Package Details</h3>
+                    <div className="bg-gray-50 dark-card rounded-lg p-6">
+                      <div className="text-gray-700 dark-text whitespace-pre-line leading-relaxed">
                         {pakg.package_details}
                       </div>
                     </div>
@@ -189,8 +183,8 @@ const PackageDetails = () => {
               {/* Right Column - Guide Info & Booking */}
               <div className="space-y-6">
                 {/* Guide Information */}
-                <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                  <h3 className="text-xl font-bold text-gray-800 mb-4">Guide Information</h3>
+                <div className="bg-white dark-card border border-gray-200 dark-border rounded-xl p-6 shadow-sm">
+                  <h3 className="text-xl font-bold text-gray-800 dark-text-bold mb-4">Guide Information</h3>
                   <div className="flex items-center mb-4">
                     <img
                       src={pakg.guide_photo}
@@ -198,55 +192,55 @@ const PackageDetails = () => {
                       className="w-16 h-16 rounded-full object-cover border-4 border-teal-500"
                     />
                     <div className="ml-4">
-                      <p className="font-bold text-gray-800 text-lg">{pakg.guide_name}</p>
-                      <p className="text-sm text-gray-600">Tour Guide</p>
+                      <p className="font-bold text-gray-800 dark-text-bold text-lg">{pakg.guide_name}</p>
+                      <p className="text-sm text-gray-600 dark-text">Tour Guide</p>
                     </div>
                   </div>
                   
                   <div className="space-y-3">
                     <div className="flex items-center">
-                      <FiMail className="text-gray-400 mr-3" />
-                      <span className="text-gray-700">{pakg.guide_email}</span>
+                      <FiMail className="text-gray-400 dark-icon mr-3" />
+                      <span className="text-gray-700 dark-text-bold">{pakg.guide_email}</span>
                     </div>
                     <div className="flex items-center">
-                      <FiPhone className="text-gray-400 mr-3" />
-                      <span className="text-gray-700">{pakg.contact_no}</span>
+                      <FiPhone className="text-gray-400 dark-icon mr-3" />
+                      <span className="text-gray-700 dark-text-bold">{pakg.contact_no}</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Booking Section */}
                 {user?.email !== pakg.guide_email && (
-                  <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                    <h3 className="text-xl font-bold text-gray-800 mb-4">Book This Tour</h3>
+                  <div className="bg-white dark-card border border-gray-200 dark-border rounded-xl p-6 shadow-sm">
+                    <h3 className="text-xl font-bold text-gray-800 dark-text-bold mb-4">Book This Tour</h3>
                     
                     {/* Availability Status */}
                     <div className={`p-4 rounded-lg mb-4 ${
-                      isFullyBooked ? 'bg-red-50 border border-red-200' :
-                      availableSeats < 5 ? 'bg-orange-50 border border-orange-200' :
-                      'bg-green-50 border border-green-200'
+                      isFullyBooked ? 'bg-red-50 border border-red-200 dark-availability-red' :
+                      availableSeats < 5 ? 'bg-orange-50 border border-orange-200 dark-availability-orange' :
+                      'bg-green-50 border border-green-200 dark-availability-green'
                     }`}>
                       <div className="flex items-center justify-between">
                         <span className={`font-semibold ${
                           isFullyBooked ? 'text-red-800' :
                           availableSeats < 5 ? 'text-orange-800' :
                           'text-green-800'
-                        }`}>
+                        } dark-availability-text`}>
                           {isFullyBooked ? '❌ Fully Booked' :
                            availableSeats < 5 ? `⚠️ Only ${availableSeats} seats left!` :
                            `✅ ${availableSeats} seats available`}
                         </span>
-                        <span className="text-sm text-gray-600">
+                        <span className="text-sm text-gray-600 dark-text">
                           {bookedSeats}/{totalSeats} booked
                         </span>
                       </div>
                     </div>
 
                     {/* Price */}
-                    <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                    <div className="bg-gray-50 dark-card rounded-lg p-4 mb-4">
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-700">Price per seat:</span>
-                        <span className="text-2xl font-bold text-teal-600">BDT {pakg.price}</span>
+                        <span className="text-gray-700 dark-text-bold">Price per seat:</span>
+                        <span className="text-2xl font-bold text-teal-600 dark-price">BDT {pakg.price}</span>
                       </div>
                     </div>
 
@@ -270,11 +264,11 @@ const PackageDetails = () => {
 
                     {/* Additional Info */}
                     <div className="mt-4 text-center">
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-gray-600 dark-text">
                         Posted {formatDistanceToNow(new Date(pakg.created_at), { addSuffix: true })}
                       </p>
                       {pakg.bookingCount > 0 && (
-                        <p className="text-sm text-teal-600 mt-1">
+                        <p className="text-sm text-teal-600 dark-price mt-1">
                           🎉 {pakg.bookingCount} successful booking(s)
                         </p>
                       )}
@@ -283,23 +277,23 @@ const PackageDetails = () => {
                 )}
 
                 {/* Quick Facts */}
-                <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-                  <h4 className="font-bold text-blue-800 mb-3">Quick Facts</h4>
-                  <ul className="space-y-2 text-sm text-blue-700">
+                <div className="bg-blue-50 dark-card border border-blue-200 dark-border rounded-xl p-6">
+                  <h4 className="font-bold text-blue-800 dark-facts-title mb-3">Quick Facts</h4>
+                  <ul className="space-y-2 text-sm text-blue-700 dark-facts-text">
                     <li className="flex items-center">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                      <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 dark-facts-dot"></span>
                       Instant confirmation
                     </li>
                     <li className="flex items-center">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                      <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 dark-facts-dot"></span>
                       Free cancellation
                     </li>
                     <li className="flex items-center">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                      <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 dark-facts-dot"></span>
                       Best price guarantee
                     </li>
                     <li className="flex items-center">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                      <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 dark-facts-dot"></span>
                       24/7 customer support
                     </li>
                   </ul>

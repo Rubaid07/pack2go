@@ -7,6 +7,7 @@ import SeasonalSpecials from './SeasonalSpecials';
 import TravelersJournal from './TravelersJournal';
 import Offers from './Offers';
 import SpinWheel from './SpinWheel';
+import SubscribeSection from './SubscribeSection';
 
 const Home = () => {
     return (
@@ -16,9 +17,9 @@ const Home = () => {
              <SpinWheel></SpinWheel>
              <LocalGuides></LocalGuides>
              <SustainableTravel></SustainableTravel>
-             <Offers></Offers>
-             <TravelersJournal></TravelersJournal>
              <SeasonalSpecials></SeasonalSpecials> 
+             <TravelersJournal></TravelersJournal>
+             <SubscribeSection></SubscribeSection>
         </div>
     );
 };

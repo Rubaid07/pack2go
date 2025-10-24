@@ -159,7 +159,7 @@ const SpinWheel = () => {
                                 className={`btn text-lg py-3 px-8 rounded-full font-semibold transition-all duration-300 ${
                                     isSpinning 
                                         ? 'bg-gray-400 cursor-not-allowed' 
-                                        : 'bg-gradient-to-r from-teal-500 to-blue-500 hover:from-teal-600 hover:to-blue-600 text-white shadow-lg hover:shadow-xl'
+                                        : 'bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white shadow-lg hover:shadow-xl'
                                 }`}
                             >
                                 {isSpinning ? (

@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
 });
 
 const useAxiosSecure = () => {
-  const { user, handleSignOutUser, loading } = useContext(AuthContext);
+  const { user, logOut, loading } = useContext(AuthContext); // 🔴 CHANGE: handleSignOutUser → logOut
 
   useEffect(() => {
     if (!loading && user) {
@@ -41,7 +41,7 @@ const useAxiosSecure = () => {
               
               if (err?.response?.status === 401 || err?.response?.status === 403) {
                 try {
-                  await handleSignOutUser();
+                  await logOut(); // 🔴 CHANGE: handleSignOutUser → logOut
                   console.log("Signed out due to invalid token");
                 } catch (signOutError) {
                   console.error("Sign out error:", signOutError);
@@ -62,7 +62,7 @@ const useAxiosSecure = () => {
 
       setupInterceptors();
     }
-  }, [user, loading, handleSignOutUser]);
+  }, [user, loading, logOut]); // 🔴 CHANGE: handleSignOutUser → logOut
 
   return axiosInstance;
 };
